@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GenericUtilities",
+        "repositoryURL": "git@github.com:cristian064/GenericUtilities.git",
+        "state": {
+          "branch": null,
+          "revision": "1413b5275cee51c100bf58b4e2a04b259cd49d10",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
