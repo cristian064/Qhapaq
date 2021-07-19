@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */; };
+		4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DD26A53441003D57D9 /* MainTabBarController.swift */; };
+		4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */; };
+		4044E7E226A53875003D57D9 /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7E126A53875003D57D9 /* ActivityCollectionViewCell.swift */; };
 		407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E868826A117D700D348B9 /* HomeViewModel.swift */; };
 		407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E868B26A1188D00D348B9 /* HomeRepository.swift */; };
 		408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BBF10269E7AC000B37970 /* AppDelegate.swift */; };
@@ -14,11 +18,18 @@
 		408BBF15269E7AC000B37970 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BBF14269E7AC000B37970 /* HomeViewController.swift */; };
 		408BBF1A269E7AC100B37970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 408BBF19269E7AC100B37970 /* Assets.xcassets */; };
 		408BBF1D269E7AC100B37970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408BBF1B269E7AC100B37970 /* LaunchScreen.storyboard */; };
+		409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB526A2612F0024846B /* CLLocation+Extension.swift */; };
+		409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB926A261BB0024846B /* ErrorManager.swift */; };
+		409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2ABB26A261CD0024846B /* ResponseApi.swift */; };
 		40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 40B2921B269E8018006DC0C8 /* GenericUtilities */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewController.swift; sourceTree = "<group>"; };
+		4044E7DD26A53441003D57D9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewModel.swift; sourceTree = "<group>"; };
+		4044E7E126A53875003D57D9 /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		407E868826A117D700D348B9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		407E868B26A1188D00D348B9 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		408BBF0D269E7AC000B37970 /* Qhapaq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qhapaq.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +39,9 @@
 		408BBF19269E7AC100B37970 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		408BBF1C269E7AC100B37970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		408BBF1E269E7AC100B37970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		409F2AB526A2612F0024846B /* CLLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
+		409F2AB926A261BB0024846B /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		409F2ABB26A261CD0024846B /* ResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseApi.swift; sourceTree = "<group>"; };
 		40B2921D269E82BC006DC0C8 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,17 +57,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		407E868726A117B700D348B9 /* ViewModel */ = {
+		4044E7D726A531E2003D57D9 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				4044E7DA26A533DD003D57D9 /* Main */,
+				4044E7D926A5331A003D57D9 /* Activity */,
+				4044E7D826A531EF003D57D9 /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		4044E7D826A531EF003D57D9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				407E868826A117D700D348B9 /* HomeViewModel.swift */,
+				408BBF14269E7AC000B37970 /* HomeViewController.swift */,
 			);
-			path = ViewModel;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4044E7D926A5331A003D57D9 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */,
+				4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */,
+				4044E7E126A53875003D57D9 /* ActivityCollectionViewCell.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		4044E7DA26A533DD003D57D9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4044E7DD26A53441003D57D9 /* MainTabBarController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		407E868A26A1187F00D348B9 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				409F2AB826A261B10024846B /* Base */,
 				407E868B26A1188D00D348B9 /* HomeRepository.swift */,
 			);
 			path = Repository;
@@ -78,17 +122,34 @@
 		408BBF0F269E7AC000B37970 /* Qhapaq */ = {
 			isa = PBXGroup;
 			children = (
+				4044E7D726A531E2003D57D9 /* Module */,
+				409F2AB426A261160024846B /* Extension */,
 				407E868A26A1187F00D348B9 /* Repository */,
-				407E868726A117B700D348B9 /* ViewModel */,
 				408BBF10269E7AC000B37970 /* AppDelegate.swift */,
 				408BBF12269E7AC000B37970 /* SceneDelegate.swift */,
-				408BBF14269E7AC000B37970 /* HomeViewController.swift */,
 				408BBF19269E7AC100B37970 /* Assets.xcassets */,
 				408BBF1B269E7AC100B37970 /* LaunchScreen.storyboard */,
 				408BBF1E269E7AC100B37970 /* Info.plist */,
 				40B2921D269E82BC006DC0C8 /* LocationProvider.swift */,
 			);
 			path = Qhapaq;
+			sourceTree = "<group>";
+		};
+		409F2AB426A261160024846B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				409F2AB526A2612F0024846B /* CLLocation+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		409F2AB826A261B10024846B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				409F2AB926A261BB0024846B /* ErrorManager.swift */,
+				409F2ABB26A261CD0024846B /* ResponseApi.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,10 +229,17 @@
 			files = (
 				408BBF15269E7AC000B37970 /* HomeViewController.swift in Sources */,
 				40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */,
+				4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */,
+				409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */,
+				409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */,
 				408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
+				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,
+				409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */,
 				407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */,
+				4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */,
 				408BBF13269E7AC000B37970 /* SceneDelegate.swift in Sources */,
+				4044E7E226A53875003D57D9 /* ActivityCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +440,7 @@
 			repositoryURL = "git@github.com:cristian064/GenericUtilities.git";
 			requirement = {
 				kind = exactVersion;
-				version = 1.0.0;
+				version = 1.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

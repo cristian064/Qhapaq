@@ -8,33 +8,17 @@
 import Foundation
 import CoreLocation
 
-public enum ResponseApi<T> {
-    case success(T)
-    case failure(ErrorManager)
-}
-
-public struct ErrorManager {
-    
-    let code: Int
-    
-    init(code: Int){
-        self.code = code
-    }
-}
-
-
 protocol HomeRepositoryProtocol: AnyObject {
-    func getLocations(completion: @escaping (ResponseApi<CLLocation>)-> Void)
+    func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
 }
 
 class HomeRepository: HomeRepositoryProtocol {
     lazy var locationProvider = LocationProvider()
-    func getLocations(completion: @escaping (ResponseApi<CLLocation>)-> Void) {
-        
-        if let currentLocation = locationProvider.currentLocation  {
-            completion(.success(currentLocation))
+    func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void) {
+        guard let currentLocation = locationProvider.currentLocation else {
+            return completion(.failure(.init(code: 1000)))
         }
-        completion(.failure(.init(code: 1000)))
+        completion(.success(currentLocation))
     }
     
     

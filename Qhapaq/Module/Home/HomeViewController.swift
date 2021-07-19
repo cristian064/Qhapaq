@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import GenericUtilities
+import Combine
 
 class HomeViewController: UIViewController {
 
@@ -15,22 +16,28 @@ class HomeViewController: UIViewController {
     let mapView = MKMapView()
     let currentLocationButton = UIButton()
     let viewModel: HomeViewModelProtocol = HomeViewModel()
+    private var cancellables = Set<AnyCancellable>()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
         setupView()
-        setupTitle()
-        setupMap()
+        setupNavigationController()
         setupBinding()
-    }
-    
-    func setupBinding() {
+        
         
     }
     
-    func setupTitle() {
-        self.navigationItem.title = "Route"
+    func setupBinding() {
+        viewModel.locationSubject.sink {[weak self] location in
+            print(location)
+        }.store(in: &cancellables)
+        
+        
+    }
+    
+    func setupNavigationController() {
+        self.navigationItem.title = "Home"
     }
     
     func setupView() {
@@ -58,22 +65,18 @@ class HomeViewController: UIViewController {
         currentLocationButton.layer.shadowOffset = .init(width: 1, height: 1)
     }
     
-    func setupMap() {
-        locationProvider = .init()
-        
-    }
-    
     @objc func currentLocationButtonPressed() {
+        viewModel.getLocation()
+//        guard let locationUser = locationProvider?.currentLocation else {
+//            return
+//        }
+//        mapView.setRegion(.init(center: locationUser.coordinate,
+//                                latitudinalMeters: 1000,
+//                                longitudinalMeters: 1000),
+//                          animated: true)
+//        mapView.showsUserLocation = true
         
-        guard let locationUser = locationProvider?.currentLocation else {
-            return
-        }
-        mapView.setRegion(.init(center: locationUser.coordinate,
-                                latitudinalMeters: 1000,
-                                longitudinalMeters: 1000),
-                          animated: true)
-        mapView.showsUserLocation = true
-        
+   
     }
 }
 
