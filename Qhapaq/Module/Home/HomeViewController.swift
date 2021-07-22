@@ -13,7 +13,7 @@ import Combine
 class HomeViewController: UIViewController {
 
     var locationProvider: LocationProvider?
-    let mapView = MKMapView()
+    let mapView = MapView()
     let currentLocationButton = UIButton()
     let viewModel: HomeViewModelProtocol = HomeViewModel()
     private var cancellables = Set<AnyCancellable>()
@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     
     func setupBinding() {
         viewModel.locationSubject.sink {[weak self] location in
-            print(location)
+            self?.mapView.location = location
         }.store(in: &cancellables)
         
         
@@ -67,16 +67,7 @@ class HomeViewController: UIViewController {
     
     @objc func currentLocationButtonPressed() {
         viewModel.getLocation()
-//        guard let locationUser = locationProvider?.currentLocation else {
-//            return
-//        }
-//        mapView.setRegion(.init(center: locationUser.coordinate,
-//                                latitudinalMeters: 1000,
-//                                longitudinalMeters: 1000),
-//                          animated: true)
-//        mapView.showsUserLocation = true
         
-   
     }
 }
 

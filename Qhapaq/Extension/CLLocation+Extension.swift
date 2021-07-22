@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 protocol CLLocationProtocol {
-    
+    var coordinate: CLLocationCoordinate2D { get }
 }
 
 extension CLLocation: CLLocationProtocol {

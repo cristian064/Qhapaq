@@ -25,6 +25,7 @@
 		409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB526A2612F0024846B /* CLLocation+Extension.swift */; };
 		409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB926A261BB0024846B /* ErrorManager.swift */; };
 		409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2ABB26A261CD0024846B /* ResponseApi.swift */; };
+		40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0590F26A8F78B00BAE3D5 /* MapView.swift */; };
 		40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 40B2921B269E8018006DC0C8 /* GenericUtilities */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		409F2AB526A2612F0024846B /* CLLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
 		409F2AB926A261BB0024846B /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		409F2ABB26A261CD0024846B /* ResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseApi.swift; sourceTree = "<group>"; };
+		40A0590F26A8F78B00BAE3D5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		40B2921D269E82BC006DC0C8 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 		408BBF0F269E7AC000B37970 /* Qhapaq */ = {
 			isa = PBXGroup;
 			children = (
+				40A0590E26A8F78100BAE3D5 /* View */,
 				4076CB0F26A6441400E35DDC /* Domain */,
 				4044E7D726A531E2003D57D9 /* Module */,
 				409F2AB426A261160024846B /* Extension */,
@@ -194,6 +197,14 @@
 				409F2ABB26A261CD0024846B /* ResponseApi.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		40A0590E26A8F78100BAE3D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40A0590F26A8F78B00BAE3D5 /* MapView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 				409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */,
 				408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */,
 				4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */,
+				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
 				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,
 				409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */,
