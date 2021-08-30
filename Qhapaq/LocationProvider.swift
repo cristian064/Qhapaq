@@ -22,9 +22,6 @@ class LocationProvider: NSObject {
         locationManager.delegate = self
         locationManager.distanceFilter = 1
         locationManager.requestWhenInUseAuthorization()
-        
-        
-       
     }
     
     
@@ -33,16 +30,16 @@ class LocationProvider: NSObject {
 
 extension LocationProvider: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse:
-            ()
-        case .denied:
-            ()
-        default:
-            break
-        }
-    }
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//        switch status {
+//        case .authorizedWhenInUse:
+//            ()
+//        case .denied:
+//            ()
+//        default:
+//            break
+//        }
+//    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations)

@@ -25,7 +25,8 @@ class HomeViewController: UIViewController {
         setupNavigationController()
         setupBinding()
         
-        
+        viewModel.getArtWork()
+        viewModel.getLocation()
     }
     
     func setupBinding() {

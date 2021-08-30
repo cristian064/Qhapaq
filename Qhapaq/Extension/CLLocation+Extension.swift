@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 protocol CLLocationProtocol {
     var coordinate: CLLocationCoordinate2D { get }
@@ -14,4 +15,8 @@ protocol CLLocationProtocol {
 
 extension CLLocation: CLLocationProtocol {
     
+}
+
+protocol MapKitProtocol {
+    var annotation: MKAnnotation {get set}
 }

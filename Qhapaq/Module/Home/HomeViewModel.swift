@@ -11,17 +11,19 @@ import CoreLocation
 
 protocol HomeViewModelProtocol: AnyObject {
     func getLocation()
+    func getArtWork()
     var locationSubject: CurrentValueSubject<CLLocationProtocol, Never> {get set}
+    var annotationsSubject: CurrentValueSubject<[ArtWorkModel], Never> {get set}
 }
 
 class HomeViewModel: HomeViewModelProtocol {
-    lazy var repository: HomeRepositoryProtocol = HomeRepository()
+    lazy var homeDataSource: HomeDataSourceProtocol = HomeDataSource()
 
     var locationSubject = CurrentValueSubject<CLLocationProtocol, Never>(CLLocation())
-    
+    var annotationsSubject = CurrentValueSubject<[ArtWorkModel], Never>([])
     
     func getLocation() {
-        repository.getLocations(completion: {[weak self] response in
+        homeDataSource.getLocations(completion: {[weak self] response in
             switch response {
             case .success(let location):
                 self?.locationSubject.value = location
@@ -30,4 +32,17 @@ class HomeViewModel: HomeViewModelProtocol {
             }
         })
     }
+    
+    func getArtWork() {
+        homeDataSource.getArtWork {[weak self] response in
+            switch response {
+            case .success(let responseData):
+                self?.annotationsSubject.value = responseData
+            case .failure(let error):
+                ()
+            }
+        }
+
+    }
+    
 }

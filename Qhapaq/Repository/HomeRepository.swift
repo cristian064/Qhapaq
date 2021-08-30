@@ -10,6 +10,7 @@ import CoreLocation
 
 protocol HomeRepositoryProtocol: AnyObject {
     func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
+    func getArtWork(completion: @escaping (ResponseApi<[ArtWorkEntity]>) -> Void)
 }
 
 class HomeRepository: HomeRepositoryProtocol {
@@ -21,5 +22,12 @@ class HomeRepository: HomeRepositoryProtocol {
         completion(.success(currentLocation))
     }
     
+    func getArtWork(completion: @escaping (ResponseApi<[ArtWorkEntity]>) -> Void) {
+        completion(.success([.init(title: "hey catalina",
+                                  locationName: "esteban",
+                                  discipline: "edificio",
+                                  lat: -12.0847,
+                                  longitude: -77.019)]))
+    }
     
 }

@@ -14,6 +14,7 @@ class UserActivityViewController: UICollectionViewController {
     let viewModel: UserActivityViewModelProtocol  = UserActivityViewModel()
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
+    let addEventButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,23 @@ class UserActivityViewController: UICollectionViewController {
         setupCollectionView()
         setupBinding()
         callWebServices()
-        
+        setupView()
         self.viewModel.setupSubscribeActionFromUI()
+    }
+    
+    
+    
+    func setupView() {
+        self.view.addSubview(addEventButton)
+        addEventButton.backgroundColor = .black
+        
+        addEventButton.anchor(top: nil,
+                                     leading: nil,
+                                     bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                     trailing: self.view.trailingAnchor,
+                                     padding: .init(top: 0, left: 0, bottom: 16, right: 16),
+                                     size: .init(width: 50, height: 50))
+        addEventButton.layer.cornerRadius = 25
     }
     
     func callWebServices() {
@@ -64,11 +80,11 @@ extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: self.view.frame.width - 32, height: 50)
+        return .init(width: self.view.frame.width - 32, height: 120)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        print(indexPath)
     }
     
     

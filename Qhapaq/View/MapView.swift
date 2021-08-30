@@ -31,8 +31,8 @@ class MapView: UIView {
     func setupCurrentLocation() {
         guard let location = location else {return}
         mapView.setRegion(.init(center: location.coordinate,
-                                latitudinalMeters: 700,
-                                longitudinalMeters: 700), animated: true)
+                                latitudinalMeters: 1000,
+                                longitudinalMeters: 1000), animated: true)
         mapView.showsUserLocation = true
     }
     
@@ -42,6 +42,30 @@ class MapView: UIView {
                                              left: 8,
                                              bottom: 8,
                                              right: 8))
+        
+        mapView.delegate = self
+        mapView.register(ArtworkMarkerView.self,
+                         forAnnotationViewWithReuseIdentifier: ArtworkMarkerView.identifier)
+    }
+    
+    func addAnnotation(with annotations: [MKAnnotation]) {
+        mapView.addAnnotations(annotations)
     }
     
 }
+
+extension MapView: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? Annotation else {return nil}
+        
+        
+        guard let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: ArtworkMarkerView.identifier, for: annotation) as? ArtworkMarkerView else {
+            return nil
+        }
+        
+        return annotationView
+    }
+}
+
+

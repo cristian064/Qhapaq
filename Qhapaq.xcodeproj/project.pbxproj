@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */; };
 		4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */; };
 		4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DD26A53441003D57D9 /* MainTabBarController.swift */; };
 		4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */; };
@@ -14,6 +15,10 @@
 		4076CB1126A6446200E35DDC /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4076CB1026A6446200E35DDC /* ActivityRepository.swift */; };
 		4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4076CB1226A644A100E35DDC /* UserActivityEntity.swift */; };
 		4076CB1726A6452800E35DDC /* UserActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4076CB1626A6452800E35DDC /* UserActivityModel.swift */; };
+		4079CE0126ACE14A0098629F /* ArtWorkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0026ACE14A0098629F /* ArtWorkEntity.swift */; };
+		4079CE0326ACE3770098629F /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0226ACE3770098629F /* HomeDataSource.swift */; };
+		4079CE0526ACE4AD0098629F /* ArtWorkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0426ACE4AD0098629F /* ArtWorkModel.swift */; };
+		4079CE0726ACEB510098629F /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0626ACEB510098629F /* Annotation.swift */; };
 		407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E868826A117D700D348B9 /* HomeViewModel.swift */; };
 		407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E868B26A1188D00D348B9 /* HomeRepository.swift */; };
 		408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BBF10269E7AC000B37970 /* AppDelegate.swift */; };
@@ -31,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkMarkerView.swift; sourceTree = "<group>"; };
 		4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewController.swift; sourceTree = "<group>"; };
 		4044E7DD26A53441003D57D9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewModel.swift; sourceTree = "<group>"; };
@@ -38,6 +44,10 @@
 		4076CB1026A6446200E35DDC /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
 		4076CB1226A644A100E35DDC /* UserActivityEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityEntity.swift; sourceTree = "<group>"; };
 		4076CB1626A6452800E35DDC /* UserActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityModel.swift; sourceTree = "<group>"; };
+		4079CE0026ACE14A0098629F /* ArtWorkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWorkEntity.swift; sourceTree = "<group>"; };
+		4079CE0226ACE3770098629F /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
+		4079CE0426ACE4AD0098629F /* ArtWorkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWorkModel.swift; sourceTree = "<group>"; };
+		4079CE0626ACEB510098629F /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		407E868826A117D700D348B9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		407E868B26A1188D00D348B9 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		408BBF0D269E7AC000B37970 /* Qhapaq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qhapaq.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				4076CB1226A644A100E35DDC /* UserActivityEntity.swift */,
+				4079CE0026ACE14A0098629F /* ArtWorkEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				4076CB1626A6452800E35DDC /* UserActivityModel.swift */,
+				4079CE0426ACE4AD0098629F /* ArtWorkModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				409681A926A6550200871EBD /* UserActivityDataSourceManager.swift */,
+				4079CE0226ACE3770098629F /* HomeDataSource.swift */,
 			);
 			path = DataSourceManager;
 			sourceTree = "<group>";
@@ -203,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				40A0590F26A8F78B00BAE3D5 /* MapView.swift */,
+				4079CE0626ACEB510098629F /* Annotation.swift */,
+				402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,13 +304,18 @@
 				409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */,
 				408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */,
 				4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */,
+				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
+				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
 				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,
 				409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */,
+				4079CE0126ACE14A0098629F /* ArtWorkEntity.swift in Sources */,
 				407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */,
 				4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */,
 				409681AA26A6550200871EBD /* UserActivityDataSourceManager.swift in Sources */,
+				4079CE0326ACE3770098629F /* HomeDataSource.swift in Sources */,
+				4079CE0526ACE4AD0098629F /* ArtWorkModel.swift in Sources */,
 				408BBF13269E7AC000B37970 /* SceneDelegate.swift in Sources */,
 				4076CB1126A6446200E35DDC /* ActivityRepository.swift in Sources */,
 				4044E7E226A53875003D57D9 /* ActivityCollectionViewCell.swift in Sources */,
