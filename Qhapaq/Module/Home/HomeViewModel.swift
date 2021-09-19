@@ -12,8 +12,10 @@ import CoreLocation
 protocol HomeViewModelProtocol: AnyObject {
     func getLocation()
     func getArtWork()
+    func startAdventure()
     var locationSubject: CurrentValueSubject<CLLocationProtocol, Never> {get set}
     var annotationsSubject: CurrentValueSubject<[ArtWorkModel], Never> {get set}
+    var distanceOfAdventureSubject: CurrentValueSubject<CLLocationDistance, Never> {get set}
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -21,7 +23,7 @@ class HomeViewModel: HomeViewModelProtocol {
 
     var locationSubject = CurrentValueSubject<CLLocationProtocol, Never>(CLLocation())
     var annotationsSubject = CurrentValueSubject<[ArtWorkModel], Never>([])
-    
+    var distanceOfAdventureSubject = CurrentValueSubject<CLLocationDistance, Never>(CLLocationDistance())
     func getLocation() {
         homeDataSource.getLocations(completion: {[weak self] response in
             switch response {
@@ -43,6 +45,18 @@ class HomeViewModel: HomeViewModelProtocol {
             }
         }
 
+    }
+    
+    func startAdventure() {
+        homeDataSource.startAdventure {[weak self] location in
+            switch location {
+            case .success(let data):
+                self?.distanceOfAdventureSubject.value = data
+            case .failure(let error):
+                ()
+            }
+            
+        }
     }
     
 }

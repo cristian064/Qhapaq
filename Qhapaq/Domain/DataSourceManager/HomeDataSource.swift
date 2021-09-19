@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol HomeDataSourceProtocol {
     var repository: HomeRepositoryProtocol {get}
     func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
     func getArtWork(completion: @escaping (ResponseApi<[ArtWorkModel]>) -> Void)
+    func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)
 }
 
 class HomeDataSource: HomeDataSourceProtocol {
@@ -45,5 +47,8 @@ class HomeDataSource: HomeDataSourceProtocol {
         }
     }
     
+    func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void) {
+        repository.startAdventure(completion: completion)
+    }
     
 }

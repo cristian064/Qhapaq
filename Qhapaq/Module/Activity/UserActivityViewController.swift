@@ -14,7 +14,11 @@ class UserActivityViewController: UICollectionViewController {
     let viewModel: UserActivityViewModelProtocol  = UserActivityViewModel()
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
-    let addEventButton = UIButton()
+    let addEventButton : UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(addEventButtonPressed), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +67,11 @@ class UserActivityViewController: UICollectionViewController {
     
     func setupCollectionView() {
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
+    }
+    
+    
+    @objc func addEventButtonPressed(_ button : UIButton){
+        print("add event")
     }
 }
 

@@ -15,7 +15,11 @@ class HomeViewController: UIViewController {
     var locationProvider: LocationProvider?
     let mapView = MapView()
     let currentLocationButton = UIButton()
+    let startAdventureButton = UIButton()
     let viewModel: HomeViewModelProtocol = HomeViewModel()
+    let distanceAdventureLabel = UILabel()
+    lazy var containerOptionStackView = UIStackView(arrangedSubviews: [startAdventureButton,
+                                                                       currentLocationButton])
     private var cancellables = Set<AnyCancellable>()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,9 @@ class HomeViewController: UIViewController {
             self?.mapView.location = location
         }.store(in: &cancellables)
         
+        viewModel.distanceOfAdventureSubject.sink {[weak self] distance in
+            self?.distanceAdventureLabel.text = "\(String(format: "%.3f", distance/1000)) Km"
+        }.store(in: &cancellables)
         
     }
     
@@ -43,20 +50,45 @@ class HomeViewController: UIViewController {
     
     func setupView() {
         self.view.addSubview(mapView)
-        self.view.addSubview(currentLocationButton)
+        self.view.addSubview(containerOptionStackView)
+        self.view.addSubview(distanceAdventureLabel)
+        
+        
+        
         mapView.anchor(top: self.view.topAnchor,
                        leading: self.view.leadingAnchor,
                        bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                        trailing: self.view.trailingAnchor)
-        currentLocationButton.anchor(top: nil,
+        
+        distanceAdventureLabel.anchor(top: self.view.topAnchor,
+                                      leading: self.view.leadingAnchor,
+                                      bottom: nil,
+                                      trailing: self.view.trailingAnchor)
+        
+        distanceAdventureLabel.backgroundColor = .gray
+        distanceAdventureLabel.textAlignment = .center
+        containerOptionStackView.anchor(top: nil,
                                      leading: nil,
                                      bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
-                                     padding: .init(top: 0, left: 0, bottom: 16, right: 16),
-                                     size: .init(width: 50, height: 50))
+                                     padding: .init(top: 0, left: 0, bottom: 16, right: 16))
 
+        
+        
+        
+        containerOptionStackView.spacing = 10
+        currentLocationButton.constrainWidth(constant: 50)
+        currentLocationButton.constrainHeight(constant: 50)
         self.currentLocationButton.backgroundColor = .black
         self.currentLocationButton.layer.cornerRadius = 25
+        self.startAdventureButton.layer.cornerRadius = 25
+        
+        startAdventureButton.setTitle("Start adventure", for: .normal)
+        startAdventureButton.backgroundColor = .green
+        startAdventureButton.constrainWidth(constant: self.view.frame.width/2)
+        
+        startAdventureButton.addTarget(self, action: #selector(startAdventureButtonAction),
+                                       for: .touchUpInside)
         currentLocationButton.addTarget(self, action: #selector(currentLocationButtonPressed),
                                         for: .touchUpInside)
         currentLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
@@ -64,11 +96,18 @@ class HomeViewController: UIViewController {
         
         currentLocationButton.layer.shadowColor = UIColor.black.cgColor
         currentLocationButton.layer.shadowOffset = .init(width: 1, height: 1)
+        
+        
     }
     
     @objc func currentLocationButtonPressed() {
         viewModel.getLocation()
         
     }
+    
+    @objc func startAdventureButtonAction() {
+        viewModel.startAdventure()
+    }
+    
 }
 

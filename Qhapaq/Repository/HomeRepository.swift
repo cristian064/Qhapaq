@@ -11,6 +11,8 @@ import CoreLocation
 protocol HomeRepositoryProtocol: AnyObject {
     func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
     func getArtWork(completion: @escaping (ResponseApi<[ArtWorkEntity]>) -> Void)
+    func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)
+    func stopAdcenture()
 }
 
 class HomeRepository: HomeRepositoryProtocol {
@@ -30,4 +32,19 @@ class HomeRepository: HomeRepositoryProtocol {
                                   longitude: -77.019)]))
     }
     
+    func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void) {
+        locationProvider.start()
+        locationProvider.completionDistance = completion
+    }
+    
+    func getDistance(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void) {
+        locationProvider.completionDistance = { distance in
+            print(distance)
+        }
+    }
+    
+    
+    func stopAdcenture() {
+        locationProvider.stop()
+    }
 }
