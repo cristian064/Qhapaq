@@ -7,17 +7,20 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 protocol HomeRepositoryProtocol: AnyObject {
-    func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
+    func getLocation(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
     func getArtWork(completion: @escaping (ResponseApi<[ArtWorkEntity]>) -> Void)
     func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)
+    func getLocations(completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void)
     func stopAdcenture()
 }
 
 class HomeRepository: HomeRepositoryProtocol {
+    private var cancellables = Set<AnyCancellable>()
     lazy var locationProvider = LocationProvider()
-    func getLocations(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void) {
+    func getLocation(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void) {
         guard let currentLocation = locationProvider.currentLocation else {
             return completion(.failure(.init(code: 1000)))
         }
@@ -38,7 +41,7 @@ class HomeRepository: HomeRepositoryProtocol {
     }
     
     func getDistance(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void) {
-        locationProvider.completionDistance = { distance in
+        locationProvider.completionDistance = {[weak self] distance in
             print(distance)
         }
     }
@@ -47,4 +50,12 @@ class HomeRepository: HomeRepositoryProtocol {
     func stopAdcenture() {
         locationProvider.stop()
     }
+    
+    func getLocations(completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void) {
+        locationProvider.locationsSubject.sink { locations in
+            completion(.success(locations))
+        }.store(in: &cancellables)
+    }
+    
+    
 }

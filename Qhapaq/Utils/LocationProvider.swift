@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import Combine
 
 class LocationProvider: NSObject {
     private let locationManager: CLLocationManager
@@ -14,9 +15,15 @@ class LocationProvider: NSObject {
     var currentLocation: CLLocation? {
         return locationManager.location
     }
-    var locations : [CLLocation] = []
+    private var distanceLocations : [CLLocation] = []
     private var isStartedLocationUpdate = false
+    private var locations : [CLLocation] = []{
+        didSet {
+            locationsSubject.value = locations
+        }
+    }
     var completionDistance : ((ResponseApi<CLLocationDistance>) -> Void )?
+    var locationsSubject = CurrentValueSubject<[CLLocationProtocol], Never>([])
     override init() {
         self.locationManager = CLLocationManager()
         super.init()
@@ -36,18 +43,20 @@ class LocationProvider: NSObject {
     }
     
     func stop() {
-        isStartedLocationUpdate = false
-        locationManager.stopUpdatingLocation()
-        distance = 0
+        if isStartedLocationUpdate{
+            isStartedLocationUpdate = false
+            locationManager.stopUpdatingLocation()
+            distance = 0
+        }
     }
     
     func validationLocation(location: CLLocation) {
-        if locations.count > 2 {
-            if let oldLocation = locations.last {
-                locations = [oldLocation, location]
+        if distanceLocations.count > 2 {
+            if let oldLocation = distanceLocations.last {
+                distanceLocations = [oldLocation, location]
             }
         }else {
-            locations.append(location)
+            distanceLocations.append(location)
         }
         calculateTheDistance()
     }
@@ -61,9 +70,9 @@ class LocationProvider: NSObject {
     }
     
     func calculateTheDistance() {
-        if locations.count == 2 {
-            let oldLocation = locations[0]
-            let newLocation = locations[1]
+        if distanceLocations.count == 2 {
+            let oldLocation = distanceLocations[0]
+            let newLocation = distanceLocations[1]
             
             let fakeDistance = newLocation.distance(from: oldLocation)
             if fakeDistance > 10 {
@@ -74,7 +83,15 @@ class LocationProvider: NSObject {
         
     }
     
-    
+    func validateLocationsUpate(with location: CLLocation) {
+        guard let lastLocation = locations.last else{
+            locations.append(location)
+            return
+        }
+        if lastLocation.distance(from: location) > 10 {
+            locations.append(location)
+        }
+    }
 }
 
 extension LocationProvider: CLLocationManagerDelegate {
@@ -92,6 +109,7 @@ extension LocationProvider: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {return}
         validationLocation(location: location)
+        validateLocationsUpate(with: location)
     }
     
 }

@@ -11,11 +11,14 @@ import CoreLocation
 
 protocol HomeViewModelProtocol: AnyObject {
     func getLocation()
+    func getLocations()
     func getArtWork()
     func startAdventure()
+    func saveAdventure() 
     var locationSubject: CurrentValueSubject<CLLocationProtocol, Never> {get set}
     var annotationsSubject: CurrentValueSubject<[ArtWorkModel], Never> {get set}
     var distanceOfAdventureSubject: CurrentValueSubject<CLLocationDistance, Never> {get set}
+    var locationsSubject:  CurrentValueSubject<[CLLocationProtocol], Never> {get set}
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -24,8 +27,9 @@ class HomeViewModel: HomeViewModelProtocol {
     var locationSubject = CurrentValueSubject<CLLocationProtocol, Never>(CLLocation())
     var annotationsSubject = CurrentValueSubject<[ArtWorkModel], Never>([])
     var distanceOfAdventureSubject = CurrentValueSubject<CLLocationDistance, Never>(CLLocationDistance())
+    var locationsSubject = CurrentValueSubject<[CLLocationProtocol], Never>([])
     func getLocation() {
-        homeDataSource.getLocations(completion: {[weak self] response in
+        homeDataSource.getLocation(completion: {[weak self] response in
             switch response {
             case .success(let location):
                 self?.locationSubject.value = location
@@ -48,8 +52,8 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func startAdventure() {
-        homeDataSource.startAdventure {[weak self] location in
-            switch location {
+        homeDataSource.startAdventure {[weak self] response in
+            switch response {
             case .success(let data):
                 self?.distanceOfAdventureSubject.value = data
             case .failure(let error):
@@ -59,4 +63,18 @@ class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
+    func saveAdventure() {
+        homeDataSource.stopAdcenture()
+    }
+    
+    func getLocations() {
+        self.homeDataSource.getLocations {[weak self] response in
+            switch response {
+            case .success(let locations):
+                self?.locationsSubject.value = locations
+            case .failure:
+                ()
+            }
+        }
+    }
 }

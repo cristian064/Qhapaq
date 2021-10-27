@@ -16,9 +16,11 @@ class HomeViewController: UIViewController {
     let mapView = MapView()
     let currentLocationButton = UIButton()
     let startAdventureButton = UIButton()
+    let saveAdventure = UIButton()
     let viewModel: HomeViewModelProtocol = HomeViewModel()
     let distanceAdventureLabel = UILabel()
     lazy var containerOptionStackView = UIStackView(arrangedSubviews: [startAdventureButton,
+                                                                       saveAdventure,
                                                                        currentLocationButton])
     private var cancellables = Set<AnyCancellable>()
     override func viewDidLoad() {
@@ -42,6 +44,9 @@ class HomeViewController: UIViewController {
             self?.distanceAdventureLabel.text = "\(String(format: "%.3f", distance/1000)) Km"
         }.store(in: &cancellables)
         
+        viewModel.locationsSubject.sink {[weak self] locations in
+            self?.mapView.addOverlay(with: locations)
+        }
     }
     
     func setupNavigationController() {
@@ -85,12 +90,23 @@ class HomeViewController: UIViewController {
         
         startAdventureButton.setTitle("Start adventure", for: .normal)
         startAdventureButton.backgroundColor = .green
-        startAdventureButton.constrainWidth(constant: self.view.frame.width/2)
+//        startAdventureButton.constrainWidth(constant: 50)
+        
+        saveAdventure.setTitle("Save adventure", for: .normal)
+        saveAdventure.backgroundColor = .gray
+//        saveAdventure.constrainWidth(constant: 50)
+        
         
         startAdventureButton.addTarget(self, action: #selector(startAdventureButtonAction),
                                        for: .touchUpInside)
+        
+        saveAdventure.addTarget(self, action: #selector(saveAdventureAction),
+                                for: .touchUpInside)
+        
         currentLocationButton.addTarget(self, action: #selector(currentLocationButtonPressed),
                                         for: .touchUpInside)
+        
+        
         currentLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
         currentLocationButton.backgroundColor = .white
         
@@ -107,6 +123,11 @@ class HomeViewController: UIViewController {
     
     @objc func startAdventureButtonAction() {
         viewModel.startAdventure()
+        viewModel.getLocations()
+    }
+    
+    @objc func saveAdventureAction() {
+        viewModel.saveAdventure()
     }
     
 }

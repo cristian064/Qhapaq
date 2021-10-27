@@ -19,8 +19,10 @@
 		4079CE0326ACE3770098629F /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0226ACE3770098629F /* HomeDataSource.swift */; };
 		4079CE0526ACE4AD0098629F /* ArtWorkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0426ACE4AD0098629F /* ArtWorkModel.swift */; };
 		4079CE0726ACEB510098629F /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079CE0626ACEB510098629F /* Annotation.swift */; };
+		407D89C12725C9A4006324A7 /* QapaqModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 407D89BF2725C9A4006324A7 /* QapaqModel.xcdatamodeld */; };
 		407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E868826A117D700D348B9 /* HomeViewModel.swift */; };
 		407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E868B26A1188D00D348B9 /* HomeRepository.swift */; };
+		4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082C10D272516B900D0A571 /* StorageProvider.swift */; };
 		408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BBF10269E7AC000B37970 /* AppDelegate.swift */; };
 		408BBF13269E7AC000B37970 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BBF12269E7AC000B37970 /* SceneDelegate.swift */; };
 		408BBF15269E7AC000B37970 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408BBF14269E7AC000B37970 /* HomeViewController.swift */; };
@@ -31,7 +33,6 @@
 		409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB926A261BB0024846B /* ErrorManager.swift */; };
 		409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2ABB26A261CD0024846B /* ResponseApi.swift */; };
 		40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0590F26A8F78B00BAE3D5 /* MapView.swift */; };
-		40A90B0626DD5FB4009F10A7 /* EventsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A90B0426DD5FB4009F10A7 /* EventsModel.xcdatamodeld */; };
 		40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 40B2921B269E8018006DC0C8 /* GenericUtilities */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
 /* End PBXBuildFile section */
@@ -49,8 +50,10 @@
 		4079CE0226ACE3770098629F /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		4079CE0426ACE4AD0098629F /* ArtWorkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWorkModel.swift; sourceTree = "<group>"; };
 		4079CE0626ACEB510098629F /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		407D89C02725C9A4006324A7 /* QapaqModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QapaqModel.xcdatamodel; sourceTree = "<group>"; };
 		407E868826A117D700D348B9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		407E868B26A1188D00D348B9 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		4082C10D272516B900D0A571 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		408BBF0D269E7AC000B37970 /* Qhapaq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qhapaq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		408BBF10269E7AC000B37970 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		408BBF12269E7AC000B37970 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +66,6 @@
 		409F2AB926A261BB0024846B /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		409F2ABB26A261CD0024846B /* ResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseApi.swift; sourceTree = "<group>"; };
 		40A0590F26A8F78B00BAE3D5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		40A90B0526DD5FB4009F10A7 /* EventsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsModel.xcdatamodel; sourceTree = "<group>"; };
 		40B2921D269E82BC006DC0C8 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,15 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		4082C10C2725167800D0A571 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				40B2921D269E82BC006DC0C8 /* LocationProvider.swift */,
+				4082C10D272516B900D0A571 /* StorageProvider.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		408BBF04269E7AC000B37970 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +184,7 @@
 		408BBF0F269E7AC000B37970 /* Qhapaq */ = {
 			isa = PBXGroup;
 			children = (
+				4082C10C2725167800D0A571 /* Utils */,
 				40A90B0326DD5F23009F10A7 /* CoreData */,
 				40A0590E26A8F78100BAE3D5 /* View */,
 				4076CB0F26A6441400E35DDC /* Domain */,
@@ -184,7 +196,6 @@
 				408BBF19269E7AC100B37970 /* Assets.xcassets */,
 				408BBF1B269E7AC100B37970 /* LaunchScreen.storyboard */,
 				408BBF1E269E7AC100B37970 /* Info.plist */,
-				40B2921D269E82BC006DC0C8 /* LocationProvider.swift */,
 			);
 			path = Qhapaq;
 			sourceTree = "<group>";
@@ -228,7 +239,7 @@
 		40A90B0326DD5F23009F10A7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				40A90B0426DD5FB4009F10A7 /* EventsModel.xcdatamodeld */,
+				407D89BF2725C9A4006324A7 /* QapaqModel.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -317,12 +328,14 @@
 				4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */,
 				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
+				4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */,
 				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
 				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,
 				409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */,
 				4079CE0126ACE14A0098629F /* ArtWorkEntity.swift in Sources */,
 				407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */,
+				407D89C12725C9A4006324A7 /* QapaqModel.xcdatamodeld in Sources */,
 				4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */,
 				409681AA26A6550200871EBD /* UserActivityDataSourceManager.swift in Sources */,
 				4079CE0326ACE3770098629F /* HomeDataSource.swift in Sources */,
@@ -330,7 +343,6 @@
 				408BBF13269E7AC000B37970 /* SceneDelegate.swift in Sources */,
 				4076CB1126A6446200E35DDC /* ActivityRepository.swift in Sources */,
 				4044E7E226A53875003D57D9 /* ActivityCollectionViewCell.swift in Sources */,
-				40A90B0626DD5FB4009F10A7 /* EventsModel.xcdatamodeld in Sources */,
 				4076CB1726A6452800E35DDC /* UserActivityModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,13 +558,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		40A90B0426DD5FB4009F10A7 /* EventsModel.xcdatamodeld */ = {
+		407D89BF2725C9A4006324A7 /* QapaqModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				40A90B0526DD5FB4009F10A7 /* EventsModel.xcdatamodel */,
+				407D89C02725C9A4006324A7 /* QapaqModel.xcdatamodel */,
 			);
-			currentVersion = 40A90B0526DD5FB4009F10A7 /* EventsModel.xcdatamodel */;
-			path = EventsModel.xcdatamodeld;
+			currentVersion = 407D89C02725C9A4006324A7 /* QapaqModel.xcdatamodel */;
+			path = QapaqModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
