@@ -28,6 +28,7 @@ extension DBRepository {
             try StorageProvider.shared.persistentContainer.viewContext.save()
             completion(.success(()))
         } catch {
+            StorageProvider.shared.persistentContainer.viewContext.rollback()
             completion(.failure(ErrorManager(code: 700)))
         }
         
