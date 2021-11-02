@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import Combine
 
-protocol HomeRepositoryProtocol: AnyObject {
+protocol HomeRepositoryProtocol: DBRepository {
     func getLocation(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
     func getArtWork(completion: @escaping (ResponseApi<[ArtWorkEntity]>) -> Void)
     func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)

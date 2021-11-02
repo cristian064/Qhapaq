@@ -35,6 +35,9 @@
 		40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0590F26A8F78B00BAE3D5 /* MapView.swift */; };
 		40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 40B2921B269E8018006DC0C8 /* GenericUtilities */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
+		40EEED552730C0C900AE8F11 /* DBRepostory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED542730C0C900AE8F11 /* DBRepostory.swift */; };
+		40EEED602730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED5E2730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift */; };
+		40EEED612730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED5F2730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,9 @@
 		409F2ABB26A261CD0024846B /* ResponseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseApi.swift; sourceTree = "<group>"; };
 		40A0590F26A8F78B00BAE3D5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		40B2921D269E82BC006DC0C8 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		40EEED542730C0C900AE8F11 /* DBRepostory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRepostory.swift; sourceTree = "<group>"; };
+		40EEED5E2730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		40EEED5F2730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,7 @@
 			children = (
 				409F2AB926A261BB0024846B /* ErrorManager.swift */,
 				409F2ABB26A261CD0024846B /* ResponseApi.swift */,
+				40EEED542730C0C900AE8F11 /* DBRepostory.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -240,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				407D89BF2725C9A4006324A7 /* QapaqModel.xcdatamodeld */,
+				40EEED5E2730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift */,
+				40EEED5F2730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -319,8 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40EEED602730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				408BBF15269E7AC000B37970 /* HomeViewController.swift in Sources */,
 				40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */,
+				40EEED612730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */,
 				409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */,
 				409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */,
@@ -328,6 +339,7 @@
 				4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */,
 				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
+				40EEED552730C0C900AE8F11 /* DBRepostory.swift in Sources */,
 				4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */,
 				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,

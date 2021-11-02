@@ -91,11 +91,9 @@ class HomeViewController: UIViewController {
         
         startAdventureButton.setTitle("Start adventure", for: .normal)
         startAdventureButton.backgroundColor = .green
-//        startAdventureButton.constrainWidth(constant: 50)
         
         saveAdventure.setTitle("Save adventure", for: .normal)
         saveAdventure.backgroundColor = .gray
-//        saveAdventure.constrainWidth(constant: 50)
         
         
         startAdventureButton.addTarget(self, action: #selector(startAdventureButtonAction),
@@ -128,7 +126,36 @@ class HomeViewController: UIViewController {
     }
     
     @objc func saveAdventureAction() {
-        viewModel.saveAdventure()
+//        viewModel.saveAdventure()
+        presentPopUpSave()
+    }
+    
+    func presentPopUpSave() {
+        let alerView = UIAlertController(title: "adventure",
+                                         message: "con que nombre te gustaria guardar la aventura",
+                                         preferredStyle: .alert)
+        
+        alerView.addTextField { textfield in
+            textfield.placeholder = "name adventure"
+        }
+        
+        alerView.addAction(UIAlertAction(title: "save",
+                                         style: .default, handler: {[weak self] _ in
+            if let nameAdventure = alerView.textFields?.first?.text{
+                self?.saveAdventure(name: nameAdventure)
+            }
+            alerView.dismiss(animated: false, completion: nil)
+        }))
+        
+        alerView.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        
+        
+        
+        self.present(alerView, animated: false, completion: nil)
+    }
+    
+    func saveAdventure(name: String) {
+        self.viewModel.saveAdventure(name: name)
     }
     
 }

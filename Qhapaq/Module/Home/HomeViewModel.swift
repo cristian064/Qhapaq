@@ -14,7 +14,7 @@ protocol HomeViewModelProtocol: AnyObject {
     func getLocations()
     func getArtWork()
     func startAdventure()
-    func saveAdventure()
+    func saveAdventure(name: String)
     func stopLocationUpdate()
     var locationSubject: CurrentValueSubject<CLLocationProtocol, Never> {get set}
     var annotationsSubject: CurrentValueSubject<[ArtWorkModel], Never> {get set}
@@ -64,8 +64,19 @@ class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
-    func saveAdventure() {
-        homeDataSource.stopAdventure()
+    func saveAdventure(name: String) {
+        let distance = distanceOfAdventureSubject.value
+        homeDataSource.saveAdventure(name: name,
+                                     distance: distance,
+                                     completion: {[weak self] response in
+            
+            switch response {
+            case .success:
+                ()
+            case .failure(let error):
+                ()
+            }
+        })
     }
     
     func getLocations() {

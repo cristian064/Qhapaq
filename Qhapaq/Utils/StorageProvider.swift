@@ -18,7 +18,6 @@ class StorageProvider {
         
         persistentContainer = .init(name: "QapaqModel")
         
-        
         persistentContainer.loadPersistentStores(completionHandler: { description, error in
             
             if let error = error {

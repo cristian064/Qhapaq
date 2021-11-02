@@ -31,7 +31,7 @@ class UserActivityDataSourceManager: UserActivityDataSourceManagerProtocol {
             guard let distance = userActivitieEntity.distance, let name = userActivitieEntity.name else {
                 return nil
             }
-            return .init(distance: distance, name: name)
+            return .init(distance: Double(distance), name: name, date: Date())
         }.compactMap({$0})
         
     }

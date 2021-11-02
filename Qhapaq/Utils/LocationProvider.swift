@@ -31,8 +31,6 @@ class LocationProvider: NSObject {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
-        locationManager.activityType = .automotiveNavigation
-        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.requestAlwaysAuthorization()
     }
     
@@ -40,7 +38,13 @@ class LocationProvider: NSObject {
         if !isStartedLocationUpdate{
             self.locationManager.startUpdatingLocation()
             isStartedLocationUpdate = true
+            startTrackingAdventure()
         }
+    }
+    
+    func startTrackingAdventure() {
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.activityType = .automotiveNavigation
     }
     
     func stop() {

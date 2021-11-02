@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserActivityModel {
-    let distance: Int
+    let distance: Double
     let name: String
+    let date: Date
 }
