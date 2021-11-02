@@ -14,7 +14,7 @@ protocol HomeDataSourceProtocol {
     func getArtWork(completion: @escaping (ResponseApi<[ArtWorkModel]>) -> Void)
     func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)
     func getLocations(completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void)
-    func stopAdcenture()
+    func stopAdventure()
 }
 
 class HomeDataSource: HomeDataSourceProtocol {
@@ -53,7 +53,7 @@ class HomeDataSource: HomeDataSourceProtocol {
         repository.startAdventure(completion: completion)
     }
     
-    func stopAdcenture() {
+    func stopAdventure() {
         self.repository.stopAdcenture()
     }
     

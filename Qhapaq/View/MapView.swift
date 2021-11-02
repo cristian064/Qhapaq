@@ -72,14 +72,25 @@ extension MapView: MKMapViewDelegate {
         mapView.removeOverlays(mapView.overlays)
         let coordinates = locations.map({$0.coordinate})
         
-        let overlay = MKPolygon(coordinates: coordinates,
-                                count: coordinates.count)
+        let overlay = MKPolyline(coordinates: coordinates,
+                                 count: coordinates.count)
+        
         mapView.addOverlay(overlay)
-        guard let lastCoordinate = coordinates.last else {return}
-        let region = MKCoordinateRegion(center: lastCoordinate,
-                                        latitudinalMeters: 300,
-                                        longitudinalMeters: 300)
-        mapView.setRegion(region, animated: true)
+        
+    }
+    
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if overlay is MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .red
+            renderer.lineWidth = 3
+            return renderer
+        }
+        
+        
+        return MKOverlayRenderer(overlay: overlay)
     }
 }
 

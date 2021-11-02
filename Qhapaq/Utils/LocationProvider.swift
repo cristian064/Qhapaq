@@ -31,6 +31,7 @@ class LocationProvider: NSObject {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10
+        locationManager.activityType = .automotiveNavigation
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.requestAlwaysAuthorization()
     }
@@ -46,6 +47,7 @@ class LocationProvider: NSObject {
         if isStartedLocationUpdate{
             isStartedLocationUpdate = false
             locationManager.stopUpdatingLocation()
+            locationManager.allowsBackgroundLocationUpdates = false
             distance = 0
         }
     }

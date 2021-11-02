@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         
         viewModel.getArtWork()
         viewModel.getLocation()
+        viewModel.stopLocationUpdate()
     }
     
     func setupBinding() {
@@ -46,7 +47,7 @@ class HomeViewController: UIViewController {
         
         viewModel.locationsSubject.sink {[weak self] locations in
             self?.mapView.addOverlay(with: locations)
-        }
+        }.store(in: &cancellables)
     }
     
     func setupNavigationController() {
