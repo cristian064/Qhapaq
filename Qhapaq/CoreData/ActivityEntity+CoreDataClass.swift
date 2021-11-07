@@ -2,7 +2,7 @@
 //  ActivityEntity+CoreDataClass.swift
 //  Qhapaq
 //
-//  Created by Cristian Ayala Laura on 1/11/21.
+//  Created by Cristian Ayala Laura on 7/11/21.
 //
 //
 

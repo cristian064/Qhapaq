@@ -13,6 +13,13 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     let titleEventLabel = UILabel()
     let descriptionEventLabel = UILabel()
     
+    var data: UserActivityModel! {
+        didSet {
+            titleEventLabel.text = data.name
+            descriptionEventLabel.text = "\(data.distance) km"
+        }
+    }
+    
     let stackView = UIStackView()
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +45,7 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         stackView.alignment = .center
         
         stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(UIView())
+        stackView.spacing = 8
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.constrainWidth(constant: 100)
@@ -49,8 +56,6 @@ class ActivityCollectionViewCell: UICollectionViewCell {
                                                                descriptionEventLabel])
         verticalStackView.axis = .vertical
         stackView.addArrangedSubview(verticalStackView)
-        
-        titleEventLabel.text = "title"
-        descriptionEventLabel.text = "the event was descripted by"
+        stackView.addArrangedSubview(UIView())
     }
 }

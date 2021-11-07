@@ -20,6 +20,8 @@ class MainTabBarController: UITabBarController {
                                                imageName: ""),
         createNavController(viewController: userActivityViewController,
                             title: "Activity", imageName: "")]
+        
+        self.tabBar.backgroundColor = .lightGray
     }
     
     private func createNavController(viewController : UIViewController , title : String , imageName : String) -> UIViewController{

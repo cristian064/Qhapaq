@@ -34,4 +34,13 @@ extension DBRepository {
         
     }
     
+    func getAllActivities(completion: @escaping (ResponseApi<[ActivityEntity]>) -> Void ) {
+        let fecthRequest: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
+        do {
+            let activities = try StorageProvider.shared.persistentContainer.viewContext.fetch(fecthRequest)
+            completion(.success(activities))
+        } catch {
+            completion(.failure(.init(code: 300)))
+        }
+    }
 }

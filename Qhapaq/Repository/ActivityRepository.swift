@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ActivityRepositoryProtocol {
+protocol ActivityRepositoryProtocol: DBRepository {
     func getActivities(comletion: @escaping (ResponseApi<[UserActivityEntity]>) -> Void)
 }
 

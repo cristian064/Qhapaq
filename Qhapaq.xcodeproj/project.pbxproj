@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4026D8F727382C5700A56B15 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8F527382C5700A56B15 /* ActivityEntity+CoreDataClass.swift */; };
+		4026D8F827382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */; };
+		4026D8FD2738604200A56B15 /* DetailUserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */; };
+		4026D8FF2738623C00A56B15 /* DetailUserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */; };
 		402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */; };
 		4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */; };
 		4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DD26A53441003D57D9 /* MainTabBarController.swift */; };
@@ -36,11 +40,13 @@
 		40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 40B2921B269E8018006DC0C8 /* GenericUtilities */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
 		40EEED552730C0C900AE8F11 /* DBRepostory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED542730C0C900AE8F11 /* DBRepostory.swift */; };
-		40EEED602730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED5E2730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift */; };
-		40EEED612730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED5F2730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4026D8F527382C5700A56B15 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityViewController.swift; sourceTree = "<group>"; };
+		4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityViewModel.swift; sourceTree = "<group>"; };
 		402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkMarkerView.swift; sourceTree = "<group>"; };
 		4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewController.swift; sourceTree = "<group>"; };
 		4044E7DD26A53441003D57D9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -71,8 +77,6 @@
 		40A0590F26A8F78B00BAE3D5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		40B2921D269E82BC006DC0C8 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		40EEED542730C0C900AE8F11 /* DBRepostory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRepostory.swift; sourceTree = "<group>"; };
-		40EEED5E2730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		40EEED5F2730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4026D8FA27385FFC00A56B15 /* UserActivity */ = {
+			isa = PBXGroup;
+			children = (
+				4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */,
+				4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */,
+				4044E7E126A53875003D57D9 /* ActivityCollectionViewCell.swift */,
+			);
+			path = UserActivity;
+			sourceTree = "<group>";
+		};
+		4026D8FB2738600B00A56B15 /* DetailActivity */ = {
+			isa = PBXGroup;
+			children = (
+				4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */,
+				4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */,
+			);
+			path = DetailActivity;
+			sourceTree = "<group>";
+		};
 		4044E7D726A531E2003D57D9 /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,9 +132,8 @@
 		4044E7D926A5331A003D57D9 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */,
-				4044E7DF26A537D0003D57D9 /* UserActivityViewModel.swift */,
-				4044E7E126A53875003D57D9 /* ActivityCollectionViewCell.swift */,
+				4026D8FB2738600B00A56B15 /* DetailActivity */,
+				4026D8FA27385FFC00A56B15 /* UserActivity */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -247,8 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				407D89BF2725C9A4006324A7 /* QapaqModel.xcdatamodeld */,
-				40EEED5E2730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift */,
-				40EEED5F2730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift */,
+				4026D8F527382C5700A56B15 /* ActivityEntity+CoreDataClass.swift */,
+				4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -328,10 +350,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40EEED602730C32A00AE8F11 /* ActivityEntity+CoreDataClass.swift in Sources */,
+				4026D8F727382C5700A56B15 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				408BBF15269E7AC000B37970 /* HomeViewController.swift in Sources */,
 				40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */,
-				40EEED612730C32A00AE8F11 /* ActivityEntity+CoreDataProperties.swift in Sources */,
+				4026D8F827382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */,
 				409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */,
 				409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */,
@@ -349,11 +371,13 @@
 				407E868C26A1188D00D348B9 /* HomeRepository.swift in Sources */,
 				407D89C12725C9A4006324A7 /* QapaqModel.xcdatamodeld in Sources */,
 				4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */,
+				4026D8FD2738604200A56B15 /* DetailUserActivityViewController.swift in Sources */,
 				409681AA26A6550200871EBD /* UserActivityDataSourceManager.swift in Sources */,
 				4079CE0326ACE3770098629F /* HomeDataSource.swift in Sources */,
 				4079CE0526ACE4AD0098629F /* ArtWorkModel.swift in Sources */,
 				408BBF13269E7AC000B37970 /* SceneDelegate.swift in Sources */,
 				4076CB1126A6446200E35DDC /* ActivityRepository.swift in Sources */,
+				4026D8FF2738623C00A56B15 /* DetailUserActivityViewModel.swift in Sources */,
 				4044E7E226A53875003D57D9 /* ActivityCollectionViewCell.swift in Sources */,
 				4076CB1726A6452800E35DDC /* UserActivityModel.swift in Sources */,
 			);

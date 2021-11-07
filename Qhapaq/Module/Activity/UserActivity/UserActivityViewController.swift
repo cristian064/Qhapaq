@@ -33,6 +33,14 @@ class UserActivityViewController: UICollectionViewController {
         self.viewModel.setupSubscribeActionFromUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let prefersLargeTitles = self.navigationController?.navigationBar.prefersLargeTitles,
+           !prefersLargeTitles{
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        viewModel.getUserActivities()
+    }
     
     
     func setupView() {
@@ -49,7 +57,7 @@ class UserActivityViewController: UICollectionViewController {
     }
     
     func callWebServices() {
-        viewModel.getUserActivities()
+//        viewModel.getUserActivities()
     }
     
     func setupSearchBar() {
@@ -61,7 +69,9 @@ class UserActivityViewController: UICollectionViewController {
     }
     
     func setupBinding() {
-        
+        self.viewModel.elementsSubject.sink {[weak self] _ in
+            self?.collectionView.reloadData()
+        }.store(in: &cancellables)
     }
     
     
@@ -78,9 +88,12 @@ class UserActivityViewController: UICollectionViewController {
 extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityCollectionViewCell
                                                         .cellIdentifier,
-                                                      for: indexPath)
+                                                            for: indexPath) as? ActivityCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.data = self.viewModel.elementsSubject.value[indexPath.row]
         return cell
     }
     
@@ -93,7 +106,9 @@ extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        let data = self.viewModel.elementsSubject.value[indexPath.row]
+        let detailUserActivity = DetailUserActivityViewController(userActivity: data)
+        self.navigationController?.pushViewController(detailUserActivity, animated: false)
     }
     
     

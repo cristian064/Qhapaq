@@ -15,23 +15,26 @@ class UserActivityDataSourceManager: UserActivityDataSourceManagerProtocol {
     lazy var repository: ActivityRepositoryProtocol = ActivityRepository()
     
     func getActivities(completion: @escaping (ResponseApi<[UserActivityModel]>) -> Void) {
-        repository.getActivities {[weak self] response in
+        repository.getAllActivities(completion: { [weak self] response in
             switch response {
             case .success(let responseData):
-                completion(.success(self?.transformActivityToModel(userActivitiesEntity: responseData) ?? []))
+                let activityModel = self?.transformActivityToModel(userActivitiesEntity: responseData) ?? []
+                completion(.success(activityModel))
             case .failure(let error):
                 completion(.failure(error))
-            
             }
-        }
+        })
     }
     
-    func transformActivityToModel(userActivitiesEntity: [UserActivityEntity]) -> [UserActivityModel]{
+    func transformActivityToModel(userActivitiesEntity: [ActivityEntity]) -> [UserActivityModel]{
         return userActivitiesEntity.map { userActivitieEntity -> UserActivityModel? in
-            guard let distance = userActivitieEntity.distance, let name = userActivitieEntity.name else {
-                return nil
+            guard let date = userActivitieEntity.date,
+                    let name = userActivitieEntity.name else {
+                    return nil
             }
-            return .init(distance: Double(distance), name: name, date: Date())
+            return .init(distance: userActivitieEntity.distance,
+                         name: name,
+                         date: date)
         }.compactMap({$0})
         
     }
