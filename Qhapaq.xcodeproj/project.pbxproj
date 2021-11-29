@@ -11,6 +11,8 @@
 		4026D8F827382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */; };
 		4026D8FD2738604200A56B15 /* DetailUserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */; };
 		4026D8FF2738623C00A56B15 /* DetailUserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */; };
+		4026D9012738843B00A56B15 /* DetailUserActivityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D9002738843B00A56B15 /* DetailUserActivityDataSource.swift */; };
+		4026D9032738848800A56B15 /* DetailUserActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D9022738848800A56B15 /* DetailUserActivityRepository.swift */; };
 		402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */; };
 		4044E7DC26A53416003D57D9 /* UserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */; };
 		4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044E7DD26A53441003D57D9 /* MainTabBarController.swift */; };
@@ -47,6 +49,8 @@
 		4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityViewController.swift; sourceTree = "<group>"; };
 		4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityViewModel.swift; sourceTree = "<group>"; };
+		4026D9002738843B00A56B15 /* DetailUserActivityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityDataSource.swift; sourceTree = "<group>"; };
+		4026D9022738848800A56B15 /* DetailUserActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityRepository.swift; sourceTree = "<group>"; };
 		402D6C9526AD18B200D73478 /* ArtworkMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkMarkerView.swift; sourceTree = "<group>"; };
 		4044E7DB26A53416003D57D9 /* UserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityViewController.swift; sourceTree = "<group>"; };
 		4044E7DD26A53441003D57D9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				409F2AB826A261B10024846B /* Base */,
 				407E868B26A1188D00D348B9 /* HomeRepository.swift */,
 				4076CB1026A6446200E35DDC /* ActivityRepository.swift */,
+				4026D9022738848800A56B15 /* DetailUserActivityRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			children = (
 				409681A926A6550200871EBD /* UserActivityDataSourceManager.swift */,
 				4079CE0226ACE3770098629F /* HomeDataSource.swift */,
+				4026D9002738843B00A56B15 /* DetailUserActivityDataSource.swift */,
 			);
 			path = DataSourceManager;
 			sourceTree = "<group>";
@@ -362,8 +368,10 @@
 				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
 				40EEED552730C0C900AE8F11 /* DBRepostory.swift in Sources */,
+				4026D9032738848800A56B15 /* DetailUserActivityRepository.swift in Sources */,
 				4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */,
 				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,
+				4026D9012738843B00A56B15 /* DetailUserActivityDataSource.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
 				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,
 				409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */,

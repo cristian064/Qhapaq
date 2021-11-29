@@ -43,4 +43,16 @@ extension DBRepository {
             completion(.failure(.init(code: 300)))
         }
     }
+    
+    
+    func delete(data: ActivityEntity,
+                completion: @escaping (ResponseApi<Void>) -> Void) {
+        StorageProvider.shared.persistentContainer.viewContext.delete(data)
+        do {
+            try StorageProvider.shared.persistentContainer.viewContext.save()
+            completion(.success(()))
+        } catch {
+            completion(.failure(.init(code: 301)))
+        }
+    }
 }
