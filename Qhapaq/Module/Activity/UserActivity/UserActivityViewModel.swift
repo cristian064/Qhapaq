@@ -31,6 +31,7 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
             switch response {
             case .success(let responseData):
                 self?.elementsSubject.value = responseData
+                
             case .failure(let error):
                 ()
             }

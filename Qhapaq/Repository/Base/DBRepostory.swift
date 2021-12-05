@@ -11,18 +11,32 @@ import CoreData
 protocol DBRepository: AnyObject {
 //    var persistentContainer: NSPersistentContainer
 //    var viewContext: NSManagedObjectContext {get}
-    func save(distance: Double, name: String, completion: @escaping (ResponseApi<Void>) -> Void )
+    func save(distance: Double,
+              name: String,
+              locations: [CLLocationProtocol],
+              completion: @escaping (ResponseApi<Void>) -> Void )
     
 }
 
 extension DBRepository {
     
-    func save(distance: Double, name: String,
+    func save(distance: Double,
+              name: String,
+              locations: [CLLocationProtocol],
               completion: @escaping (ResponseApi<Void>) -> Void)  {
         let activity = ActivityEntity(context: StorageProvider.shared.persistentContainer.viewContext)
         activity.distance = distance
         activity.date = Date()
         activity.name = name
+        
+    
+        locations.forEach { location in
+            let locationEntity = ActivityLocationEntity(context: StorageProvider.shared.persistentContainer.viewContext)
+            locationEntity.latitude = location.coordinate.latitude
+            locationEntity.longitude = location.coordinate.longitude
+            activity.addToLocations(locationEntity)
+        }
+        
         
         do {
             try StorageProvider.shared.persistentContainer.viewContext.save()
@@ -36,12 +50,14 @@ extension DBRepository {
     
     func getAllActivities(completion: @escaping (ResponseApi<[ActivityEntity]>) -> Void ) {
         let fecthRequest: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
+        
         do {
             let activities = try StorageProvider.shared.persistentContainer.viewContext.fetch(fecthRequest)
             completion(.success(activities))
         } catch {
             completion(.failure(.init(code: 300)))
         }
+        
     }
     
     

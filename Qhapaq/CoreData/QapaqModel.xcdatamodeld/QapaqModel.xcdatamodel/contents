@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ActivityEntity" representedClassName="ActivityEntity" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="distance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="locations" toMany="YES" deletionRule="Cascade" destinationEntity="ActivityLocationEntity" inverseName="activity" inverseEntity="ActivityLocationEntity"/>
+    </entity>
+    <entity name="ActivityLocationEntity" representedClassName="ActivityLocationEntity" syncable="YES">
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="activity" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityEntity" inverseName="locations" inverseEntity="ActivityEntity"/>
     </entity>
     <elements>
-        <element name="ActivityEntity" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="ActivityEntity" positionX="-385.3983154296875" positionY="-17.23397827148438" width="128" height="103"/>
+        <element name="ActivityLocationEntity" positionX="-63" positionY="9" width="128" height="88"/>
     </elements>
 </model>

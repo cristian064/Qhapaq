@@ -68,6 +68,7 @@ class HomeViewModel: HomeViewModelProtocol {
         let distance = distanceOfAdventureSubject.value
         homeDataSource.saveAdventure(name: name,
                                      distance: distance,
+                                     locations: locationsSubject.value,
                                      completion: {[weak self] response in
             
             switch response {

@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>"Necesitamos su ubicacion para nuevas tareas"</string>
+	<string>&quot;Necesitamos su ubicacion para nuevas tareas&quot;</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"tell us whta are you doing"</string>
+	<string>&quot;tell us whta are you doing&quot;</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

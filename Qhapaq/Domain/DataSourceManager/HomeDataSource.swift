@@ -14,7 +14,10 @@ protocol HomeDataSourceProtocol {
     func getArtWork(completion: @escaping (ResponseApi<[ArtWorkModel]>) -> Void)
     func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)
     func getLocations(completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void)
-    func saveAdventure(name: String, distance: Double, completion: @escaping (ResponseApi<Void>) -> Void)
+    func saveAdventure(name: String,
+                       distance: Double,
+                       locations: [CLLocationProtocol],
+                       completion: @escaping (ResponseApi<Void>) -> Void)
     func stopAdventure()
 }
 
@@ -62,7 +65,13 @@ class HomeDataSource: HomeDataSourceProtocol {
         self.repository.getLocations(completion: completion)
     }
     
-    func saveAdventure(name: String, distance: Double, completion: @escaping (ResponseApi<Void>) -> Void) {
-        self.repository.save(distance: distance, name: name, completion: completion)
+    func saveAdventure(name: String,
+                       distance: Double,
+                       locations: [CLLocationProtocol],
+                       completion: @escaping (ResponseApi<Void>) -> Void) {
+        self.repository.save(distance: distance,
+                             name: name,
+                             locations: locations,
+                             completion: completion)
     }
 }
