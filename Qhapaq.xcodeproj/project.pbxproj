@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4026D8F727382C5700A56B15 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8F527382C5700A56B15 /* ActivityEntity+CoreDataClass.swift */; };
-		4026D8F827382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */; };
+		40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */; };
+		40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */; };
+		40097B86275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */; };
+		40097B87275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B83275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift */; };
 		4026D8FD2738604200A56B15 /* DetailUserActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */; };
 		4026D8FF2738623C00A56B15 /* DetailUserActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */; };
 		4026D9012738843B00A56B15 /* DetailUserActivityDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026D9002738843B00A56B15 /* DetailUserActivityDataSource.swift */; };
@@ -45,8 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4026D8F527382C5700A56B15 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityLocationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		40097B83275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityLocationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4026D8FC2738604200A56B15 /* DetailUserActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityViewController.swift; sourceTree = "<group>"; };
 		4026D8FE2738623C00A56B15 /* DetailUserActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityViewModel.swift; sourceTree = "<group>"; };
 		4026D9002738843B00A56B15 /* DetailUserActivityDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserActivityDataSource.swift; sourceTree = "<group>"; };
@@ -274,9 +278,11 @@
 		40A90B0326DD5F23009F10A7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */,
+				40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */,
+				40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */,
+				40097B83275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift */,
 				407D89BF2725C9A4006324A7 /* QapaqModel.xcdatamodeld */,
-				4026D8F527382C5700A56B15 /* ActivityEntity+CoreDataClass.swift */,
-				4026D8F627382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -356,14 +362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4026D8F727382C5700A56B15 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				408BBF15269E7AC000B37970 /* HomeViewController.swift in Sources */,
 				40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */,
-				4026D8F827382C5700A56B15 /* ActivityEntity+CoreDataProperties.swift in Sources */,
+				40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */,
+				40097B86275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift in Sources */,
 				409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */,
+				40097B87275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift in Sources */,
 				409F2ABC26A261CD0024846B /* ResponseApi.swift in Sources */,
 				408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */,
+				40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */,
 				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
@@ -587,8 +595,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:cristian064/GenericUtilities.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.0.1;
+				branch = develop;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -5,9 +5,9 @@
         "package": "GenericUtilities",
         "repositoryURL": "git@github.com:cristian064/GenericUtilities.git",
         "state": {
-          "branch": null,
+          "branch": "develop",
           "revision": "e6da09edb6c4a1fbe1575b27290be21c037c27f0",
-          "version": "1.0.1"
+          "version": null
         }
       }
     ]
