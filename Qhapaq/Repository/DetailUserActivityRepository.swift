@@ -8,9 +8,15 @@
 import Foundation
 
 protocol DetailUserActivityRepositoryProtocol: DBRepository {
-    
+    func getAdventureLocations(with name: String,
+                               completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void)
 }
 
 class DetailUserActivityRepository: DetailUserActivityRepositoryProtocol {
     
+    func getAdventureLocations(with name: String, completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void) {
+        self.getLocationOfAdventure(with: name,
+                                   completion: completion)
+    }
 }
+

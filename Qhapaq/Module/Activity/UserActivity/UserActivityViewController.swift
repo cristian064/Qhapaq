@@ -14,11 +14,6 @@ class UserActivityViewController: UICollectionViewController {
     let viewModel: UserActivityViewModelProtocol  = UserActivityViewModel()
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
-    let addEventButton : UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(addEventButtonPressed), for: .touchUpInside)
-        return button
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +24,6 @@ class UserActivityViewController: UICollectionViewController {
         setupCollectionView()
         setupBinding()
         callWebServices()
-        setupView()
         self.viewModel.setupSubscribeActionFromUI()
     }
     
@@ -42,19 +36,6 @@ class UserActivityViewController: UICollectionViewController {
         viewModel.getUserActivities()
     }
     
-    
-    func setupView() {
-        self.view.addSubview(addEventButton)
-        addEventButton.backgroundColor = .black
-        
-        addEventButton.anchor(top: nil,
-                                     leading: nil,
-                                     bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
-                                     trailing: self.view.trailingAnchor,
-                                     padding: .init(top: 0, left: 0, bottom: 16, right: 16),
-                                     size: .init(width: 50, height: 50))
-        addEventButton.layer.cornerRadius = 25
-    }
     
     func callWebServices() {
 //        viewModel.getUserActivities()
@@ -79,10 +60,6 @@ class UserActivityViewController: UICollectionViewController {
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
     }
     
-    
-    @objc func addEventButtonPressed(_ button : UIButton){
-        print("add event")
-    }
 }
 
 extension UserActivityViewController: UICollectionViewDelegateFlowLayout {

@@ -16,6 +16,9 @@ protocol DBRepository: AnyObject {
               locations: [CLLocationProtocol],
               completion: @escaping (ResponseApi<Void>) -> Void )
     
+    func getLocationOfAdventure(with name: String,
+                                completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void)
+    
 }
 
 extension DBRepository {
@@ -58,6 +61,20 @@ extension DBRepository {
             completion(.failure(.init(code: 300)))
         }
         
+    }
+    
+    func getLocationOfAdventure(with name: String,
+                                completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void) {
+        
+        let fetchRequest: NSFetchRequest<ActivityLocationEntity> = ActivityLocationEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(ActivityLocationEntity.activity.name), name)
+        
+        do {
+            let locations = try StorageProvider.shared.persistentContainer.viewContext.fetch(fetchRequest)
+            completion(.success(locations))
+        } catch {
+            completion(.failure(.init(code: 150)))
+        }
     }
     
     

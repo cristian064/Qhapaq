@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import MapKit
 
 struct UserActivityModel {
     let distance: Double
     let name: String
     let date: Date
+}
+
+struct AdventureLocationModel: CLLocationProtocol {
+    var coordinate: CLLocationCoordinate2D
 }

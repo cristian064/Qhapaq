@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import CoreData
+import Combine
+import MapKit
 
 class DetailUserActivityViewController: UIViewController {
 
     
     let viewModel: DetailUserActivityViewModelProtocol
-    let adventureImageView =  UIImageView()
+    let adventureMapView =  MapView()
     let nameAdventure = UILabel()
     let detailAdventure = UILabel()
+    var cancellables = Set<AnyCancellable>()
     lazy var stackView : UIStackView = .init(arrangedSubviews: [nameAdventure,
                                                                 detailAdventure,
-                                                                adventureImageView])
+                                                                adventureMapView])
     init(userActivity: UserActivityModel) {
         self.viewModel = DetailUserActivityViewModel(userActivity: userActivity)
         super.init(nibName: nil, bundle: nil)
@@ -32,9 +36,17 @@ class DetailUserActivityViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        setupBinding()
         setupNavigationController()
         setupViews()
         setupConstraints()
+        self.viewModel.getAdventureLocations()
+    }
+    
+    func setupBinding() {
+        self.viewModel.locationsOfAdventureSubject.sink {[weak self] adventures in
+            self?.adventureMapView.addOverlay(with: adventures)
+        }.store(in: &cancellables)
     }
     
     func setupConstraints() {
@@ -47,7 +59,6 @@ class DetailUserActivityViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         
-        adventureImageView.backgroundColor = .red
         self.nameAdventure.textAlignment = .center
         self.detailAdventure.textAlignment = .center
         self.nameAdventure.text = self.viewModel.userActivity.name
