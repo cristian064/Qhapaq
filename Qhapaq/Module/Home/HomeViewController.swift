@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
                                                                        saveAdventure,
                                                                        currentLocationButton])
     private var cancellables = Set<AnyCancellable>()
+    var isFirstLoaded = true
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,10 +31,10 @@ class HomeViewController: UIViewController {
         setupView()
         setupNavigationController()
         setupBinding()
-        
-        viewModel.getArtWork()
-        viewModel.getLocation()
-        viewModel.stopLocationUpdate()
+        viewModel.viewDidLoad()
+//        viewModel.getArtWork()
+//        viewModel.getLocation()
+//        viewModel.stopLocationUpdate()
     }
     
     func setupBinding() {
@@ -47,6 +48,18 @@ class HomeViewController: UIViewController {
         
         viewModel.locationsSubject.sink {[weak self] locations in
             self?.mapView.addOverlay(with: locations)
+        }.store(in: &cancellables)
+        
+        viewModel.titleAdventureSubject.sink {[weak self] titleAdventure in
+            self?.startAdventureButton.setTitle(titleAdventure, for: .normal)
+        }.store(in: &cancellables)
+        
+        viewModel.statusAdventureSubject.sink {[weak self] statusOfAdventure in
+            if let isFirstLoaded = self?.isFirstLoaded, isFirstLoaded{
+                self?.isFirstLoaded = false
+                return
+            }
+            self?.saveAdventure.isHidden = statusOfAdventure
         }.store(in: &cancellables)
     }
     
@@ -83,18 +96,21 @@ class HomeViewController: UIViewController {
         
         
         containerOptionStackView.spacing = 10
+        containerOptionStackView.axis = .vertical
+        containerOptionStackView.alignment = .trailing
         currentLocationButton.constrainWidth(constant: 50)
         currentLocationButton.constrainHeight(constant: 50)
         self.currentLocationButton.backgroundColor = .black
         self.currentLocationButton.layer.cornerRadius = 25
         self.startAdventureButton.layer.cornerRadius = 25
+        self.startAdventureButton.constrainWidth(constant: 200)
         
-        startAdventureButton.setTitle("Start adventure", for: .normal)
+//        startAdventureButton.setTitle("Start adventure", for: .normal)
         startAdventureButton.backgroundColor = .green
         
         saveAdventure.setTitle("Save adventure", for: .normal)
         saveAdventure.backgroundColor = .gray
-        
+        saveAdventure.isHidden = true
         
         startAdventureButton.addTarget(self, action: #selector(startAdventureButtonAction),
                                        for: .touchUpInside)
@@ -122,7 +138,7 @@ class HomeViewController: UIViewController {
     
     @objc func startAdventureButtonAction() {
         viewModel.startAdventure()
-        viewModel.getLocations()
+//        viewModel.getLocations()
     }
     
     @objc func saveAdventureAction() {

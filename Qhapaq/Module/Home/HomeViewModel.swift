@@ -16,10 +16,15 @@ protocol HomeViewModelProtocol: AnyObject {
     func startAdventure()
     func saveAdventure(name: String)
     func stopLocationUpdate()
+    func viewDidLoad()
     var locationSubject: CurrentValueSubject<CLLocationProtocol, Never> {get set}
     var annotationsSubject: CurrentValueSubject<[ArtWorkModel], Never> {get set}
     var distanceOfAdventureSubject: CurrentValueSubject<CLLocationDistance, Never> {get set}
     var locationsSubject:  CurrentValueSubject<[CLLocationProtocol], Never> {get set}
+    var titleAdventureSubject:  CurrentValueSubject<String, Never> {get set}
+    var statusAdventureSubject: CurrentValueSubject<Bool,Never>{get set}
+    
+
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -29,6 +34,21 @@ class HomeViewModel: HomeViewModelProtocol {
     var annotationsSubject = CurrentValueSubject<[ArtWorkModel], Never>([])
     var distanceOfAdventureSubject = CurrentValueSubject<CLLocationDistance, Never>(CLLocationDistance())
     var locationsSubject = CurrentValueSubject<[CLLocationProtocol], Never>([])
+    var titleAdventureSubject:  CurrentValueSubject<String, Never>
+    var statusAdventureSubject: CurrentValueSubject<Bool,Never>
+    
+    
+    
+    init() {
+        titleAdventureSubject = .init("Start")
+        statusAdventureSubject = .init(false)
+    }
+    
+    
+    func viewDidLoad() {
+        stopLocationUpdate()
+    }
+    
     func getLocation() {
         homeDataSource.getLocation(completion: {[weak self] response in
             switch response {
@@ -45,7 +65,7 @@ class HomeViewModel: HomeViewModelProtocol {
             switch response {
             case .success(let responseData):
                 self?.annotationsSubject.value = responseData
-            case .failure(let error):
+            case .failure:
                 ()
             }
         }
@@ -53,14 +73,22 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func startAdventure() {
+        statusAdventureSubject.value.toggle()
+        
+        titleAdventureSubject.value = statusAdventureSubject.value ? "Stop" : "Start new Adventure"
+        
+        guard statusAdventureSubject.value else {
+            stopLocationUpdate()
+            return}
+        getLocations()
         homeDataSource.startAdventure {[weak self] response in
             switch response {
             case .success(let data):
                 self?.distanceOfAdventureSubject.value = data
-            case .failure(let error):
+            case .failure:
                 ()
             }
-            
+
         }
     }
     
@@ -74,7 +102,7 @@ class HomeViewModel: HomeViewModelProtocol {
             switch response {
             case .success:
                 ()
-            case .failure(let error):
+            case .failure:
                 ()
             }
         })
