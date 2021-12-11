@@ -14,4 +14,8 @@ public struct ErrorManager: Error {
     init(code: Int){
         self.code = code
     }
+    
+    init(error: Error) {
+        self.code = 100
+    }
 }

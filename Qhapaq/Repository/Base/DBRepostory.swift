@@ -58,6 +58,7 @@ extension DBRepository {
             let activities = try StorageProvider.shared.persistentContainer.viewContext.fetch(fecthRequest)
             completion(.success(activities))
         } catch {
+//            StorageProvider.shared.persistentContainer.viewContext.rollback()
             completion(.failure(.init(code: 300)))
         }
         
@@ -69,14 +70,18 @@ extension DBRepository {
         let fetchRequest: NSFetchRequest<ActivityLocationEntity> = ActivityLocationEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(ActivityLocationEntity.activity.name), name)
         
-        do {
-            let locations = try StorageProvider.shared.persistentContainer.viewContext.fetch(fetchRequest)
-            completion(.success(locations))
-        } catch {
-            completion(.failure(.init(code: 150)))
-        }
+        self.getDB(fetchRequest: fetchRequest, completion: completion)
     }
     
+    func getDB<T>(fetchRequest: NSFetchRequest<T>,
+                  completion: @escaping (ResponseApi<[T]>) -> Void) {
+        do{
+            let response = try StorageProvider.shared.persistentContainer.viewContext.fetch(fetchRequest)
+            completion(.success(response))
+        }catch {
+            completion(.failure(.init(error: error)))
+        }
+    }
     
     func delete(data: ActivityEntity,
                 completion: @escaping (ResponseApi<Void>) -> Void) {

@@ -17,11 +17,23 @@ class MainTabBarController: UITabBarController {
         
         viewControllers = [createNavController(viewController: homeViewController,
                                                title: "home",
-                                               imageName: ""),
+                                               imageName: "bicycle"),
         createNavController(viewController: userActivityViewController,
-                            title: "Activity", imageName: "")]
+                            title: "Activity", imageName: "clock.arrow.circlepath")]
         
-        self.tabBar.backgroundColor = .lightGray
+//        self.tabBar.backgroundColor = .lightGray
+        
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            tabBarAppearance.backgroundColor = UIColor.white
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+        }
+        self.tabBar.isTranslucent = false
     }
     
     private func createNavController(viewController : UIViewController , title : String , imageName : String) -> UIViewController{
