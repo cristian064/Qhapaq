@@ -27,12 +27,12 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
     
     
     func getUserActivities() {
-        dataSourceManger.getActivities {[weak self] response in
+        dataSourceManger.getActivities(text: "") {[weak self] response in
             switch response {
             case .success(let responseData):
                 self?.elementsSubject.value = responseData
                 
-            case .failure(let error):
+            case .failure:
                 ()
             }
         }
@@ -40,14 +40,20 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
     
     
     func searchRoute(with text: String?) {
-        print(text)
+        dataSourceManger.getActivities(text: text ?? "") {[weak self] response in
+            switch response {
+            case .success(let responseData):
+                self?.elementsSubject.value = responseData
+            case .failure:
+                ()
+            }
+        }
     }
     
     func setupSubscribeActionFromUI() {
         searchSubject.debounce(for: 1, scheduler: DispatchQueue.main)
-            .filter({$0.count > 2})
+            .filter({$0.count > 0})
             .removeDuplicates()
-            .print()
             .sink {[weak self] text in
                 self?.searchRoute(with: text)
             }.store(in: &cancellables)

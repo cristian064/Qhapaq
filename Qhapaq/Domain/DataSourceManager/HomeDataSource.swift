@@ -7,17 +7,18 @@
 
 import Foundation
 import CoreLocation
+import GenericUtilities
 
 protocol HomeDataSourceProtocol {
     var repository: HomeRepositoryProtocol {get}
-    func getLocation(completion: @escaping (ResponseApi<CLLocationProtocol>)-> Void)
-    func getArtWork(completion: @escaping (ResponseApi<[ArtWorkModel]>) -> Void)
-    func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void)
-    func getLocations(completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void)
+    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>)-> Void)
+    func getArtWork(completion: @escaping (ResponseAPI<[ArtWorkModel]>) -> Void)
+    func startAdventure(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void)
+    func getLocations(completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)
     func saveAdventure(name: String,
                        distance: Double,
                        locations: [CLLocationProtocol],
-                       completion: @escaping (ResponseApi<Void>) -> Void)
+                       completion: @escaping (ResponseAPI<Void>) -> Void)
     func stopAdventure()
 }
 
@@ -25,11 +26,11 @@ class HomeDataSource: HomeDataSourceProtocol {
 
     lazy var repository: HomeRepositoryProtocol = HomeRepository()
     
-    func getLocation(completion: @escaping (ResponseApi<CLLocationProtocol>) -> Void) {
+    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>) -> Void) {
         repository.getLocation(completion: completion)
     }
     
-    func getArtWork(completion: @escaping (ResponseApi<[ArtWorkModel]>) -> Void) {
+    func getArtWork(completion: @escaping (ResponseAPI<[ArtWorkModel]>) -> Void) {
         repository.getArtWork {response in
             switch response {
             case .success(let entityData):
@@ -53,7 +54,7 @@ class HomeDataSource: HomeDataSourceProtocol {
         }
     }
     
-    func startAdventure(completion: @escaping (ResponseApi<CLLocationDistance>) -> Void) {
+    func startAdventure(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void) {
         repository.startAdventure(completion: completion)
     }
     
@@ -61,14 +62,14 @@ class HomeDataSource: HomeDataSourceProtocol {
         self.repository.stopAdcenture()
     }
     
-    func getLocations(completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void) {
+    func getLocations(completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void) {
         self.repository.getLocations(completion: completion)
     }
     
     func saveAdventure(name: String,
                        distance: Double,
                        locations: [CLLocationProtocol],
-                       completion: @escaping (ResponseApi<Void>) -> Void) {
+                       completion: @escaping (ResponseAPI<Void>) -> Void) {
         self.repository.save(distance: distance,
                              name: name,
                              locations: locations,

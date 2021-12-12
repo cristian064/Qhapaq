@@ -6,17 +6,25 @@
 //
 
 import Foundation
+import CoreData
+import GenericUtilities
 
 protocol DetailUserActivityRepositoryProtocol: DBRepository {
     func getAdventureLocations(with name: String,
-                               completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void)
+                               completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void)
 }
 
 class DetailUserActivityRepository: DetailUserActivityRepositoryProtocol {
+    var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
     
-    func getAdventureLocations(with name: String, completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void) {
+    
+    func getAdventureLocations(with name: String, completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void) {
         self.getLocationOfAdventure(with: name,
                                    completion: completion)
+    }
+    
+    deinit{
+        print("not retain cycle")
     }
 }
 

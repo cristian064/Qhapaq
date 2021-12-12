@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import Combine
+import GenericUtilities
 
 class LocationProvider: NSObject {
     private let locationManager: CLLocationManager
@@ -22,7 +23,7 @@ class LocationProvider: NSObject {
             locationsSubject.value = locations
         }
     }
-    var completionDistance : ((ResponseApi<CLLocationDistance>) -> Void )?
+    var completionDistance : ((ResponseAPI<CLLocationDistance>) -> Void )?
     var locationsSubject = CurrentValueSubject<[CLLocationProtocol], Never>([])
     override init() {
         self.locationManager = CLLocationManager()
@@ -53,6 +54,8 @@ class LocationProvider: NSObject {
             locationManager.stopUpdatingLocation()
             locationManager.allowsBackgroundLocationUpdates = false
             distance = 0
+            locations = []
+            locationManager.stopMonitoringSignificantLocationChanges()
         }
     }
     

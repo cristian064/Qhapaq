@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GenericUtilities
 
 protocol UserActivityDataSourceManagerProtocol {
     
@@ -14,8 +15,9 @@ protocol UserActivityDataSourceManagerProtocol {
 class UserActivityDataSourceManager: UserActivityDataSourceManagerProtocol {
     lazy var repository: ActivityRepositoryProtocol = ActivityRepository()
     
-    func getActivities(completion: @escaping (ResponseApi<[UserActivityModel]>) -> Void) {
-        repository.getAllActivities(completion: { [weak self] response in
+    func getActivities(text: String,
+                       completion: @escaping (ResponseAPI<[UserActivityModel]>) -> Void) {
+        repository.getAllActivities(text: text, completion: { [weak self] response in
             switch response {
             case .success(let responseData):
                 let activityModel = self?.transformActivityToModel(userActivitiesEntity: responseData) ?? []

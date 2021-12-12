@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ResponseApi<T> {
-    case success(T)
-    case failure(ErrorManager)
-}
+//public enum ResponseApi<T> {
+//    case success(T)
+//    case failure(ErrorManager)
+//}

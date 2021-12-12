@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import CoreData
+import GenericUtilities
 
 protocol ActivityRepositoryProtocol: DBRepository {
-    func getActivities(comletion: @escaping (ResponseApi<[UserActivityEntity]>) -> Void)
+    func getActivities(comletion: @escaping (ResponseAPI<[UserActivityEntity]>) -> Void)
 }
 
 class ActivityRepository: ActivityRepositoryProtocol {
+    var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
     
-    func getActivities(comletion: @escaping (ResponseApi<[UserActivityEntity]>) -> Void) {
+    
+    func getActivities(comletion: @escaping (ResponseAPI<[UserActivityEntity]>) -> Void) {
         comletion(.success([.init(distance: 10, name: "ruta 1"),
                             .init(distance: 20, name: "ruta 2"),
                             .init(distance: 30, name: "ruta 3"),

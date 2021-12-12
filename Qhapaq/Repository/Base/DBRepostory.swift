@@ -7,17 +7,17 @@
 
 import Foundation
 import CoreData
+import CoreDataHelp
+import GenericUtilities
 
-protocol DBRepository: AnyObject {
-//    var persistentContainer: NSPersistentContainer
-//    var viewContext: NSManagedObjectContext {get}
+protocol DBRepository: StorageAPI {
     func save(distance: Double,
               name: String,
               locations: [CLLocationProtocol],
-              completion: @escaping (ResponseApi<Void>) -> Void )
+              completion: @escaping (ResponseAPI<Void>) -> Void )
     
     func getLocationOfAdventure(with name: String,
-                                completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void)
+                                completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void)
     
 }
 
@@ -26,7 +26,7 @@ extension DBRepository {
     func save(distance: Double,
               name: String,
               locations: [CLLocationProtocol],
-              completion: @escaping (ResponseApi<Void>) -> Void)  {
+              completion: @escaping (ResponseAPI<Void>) -> Void)  {
         let activity = ActivityEntity(context: StorageProvider.shared.persistentContainer.viewContext)
         activity.distance = distance
         activity.date = Date()
@@ -46,26 +46,23 @@ extension DBRepository {
             completion(.success(()))
         } catch {
             StorageProvider.shared.persistentContainer.viewContext.rollback()
-            completion(.failure(ErrorManager(code: 700)))
+            completion(.failure(.init(code: 700)))
         }
         
     }
     
-    func getAllActivities(completion: @escaping (ResponseApi<[ActivityEntity]>) -> Void ) {
+    func getAllActivities(text: String,
+                          completion: @escaping (ResponseAPI<[ActivityEntity]>) -> Void ) {
         let fecthRequest: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
-        
-        do {
-            let activities = try StorageProvider.shared.persistentContainer.viewContext.fetch(fecthRequest)
-            completion(.success(activities))
-        } catch {
-//            StorageProvider.shared.persistentContainer.viewContext.rollback()
-            completion(.failure(.init(code: 300)))
+        if !text.isEmpty{
+            fecthRequest.predicate = NSPredicate(format: "%K CONTAINS[c] %@", #keyPath(ActivityEntity.name), text)
         }
+        self.getDB(fetchRequest: fecthRequest, completion: completion)
         
     }
     
     func getLocationOfAdventure(with name: String,
-                                completion: @escaping (ResponseApi<[ActivityLocationEntity]>) -> Void) {
+                                completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void) {
         
         let fetchRequest: NSFetchRequest<ActivityLocationEntity> = ActivityLocationEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(ActivityLocationEntity.activity.name), name)
@@ -73,18 +70,8 @@ extension DBRepository {
         self.getDB(fetchRequest: fetchRequest, completion: completion)
     }
     
-    func getDB<T>(fetchRequest: NSFetchRequest<T>,
-                  completion: @escaping (ResponseApi<[T]>) -> Void) {
-        do{
-            let response = try StorageProvider.shared.persistentContainer.viewContext.fetch(fetchRequest)
-            completion(.success(response))
-        }catch {
-            completion(.failure(.init(error: error)))
-        }
-    }
-    
     func delete(data: ActivityEntity,
-                completion: @escaping (ResponseApi<Void>) -> Void) {
+                completion: @escaping (ResponseAPI<Void>) -> Void) {
         StorageProvider.shared.persistentContainer.viewContext.delete(data)
         do {
             try StorageProvider.shared.persistentContainer.viewContext.save()

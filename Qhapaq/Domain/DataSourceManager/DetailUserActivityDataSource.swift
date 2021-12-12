@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import GenericUtilities
 
 protocol DetailUserActivityDataSourceProtocol {
     func getAdventureLocations(with name: String,
-                               completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void)
+                               completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)
 }
 
 class DetailUserActivityDataSource: DetailUserActivityDataSourceProtocol {
@@ -17,20 +18,13 @@ class DetailUserActivityDataSource: DetailUserActivityDataSourceProtocol {
     
     
     func deleteMovie(userDetailInfo: UserActivityModel,
-                     completion: @escaping (ResponseApi<Void>)-> Void ) {
+                     completion: @escaping (ResponseAPI<Void>)-> Void ) {
         
-        
-        
-//        let entity = ActivityEntity(context: <#T##NSManagedObjectContext#>)
-//
-//
-//        repository.delete(data: ActivityEntity,
-//                          completion: completion)
     }
     
     
     func getAdventureLocations(with name: String,
-                               completion: @escaping (ResponseApi<[CLLocationProtocol]>) -> Void) {
+                               completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void) {
         
         repository.getAdventureLocations(with: name) {responseEntity in
             switch responseEntity {
