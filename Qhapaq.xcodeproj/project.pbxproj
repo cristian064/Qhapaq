@@ -39,11 +39,9 @@
 		409681AA26A6550200871EBD /* UserActivityDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409681A926A6550200871EBD /* UserActivityDataSourceManager.swift */; };
 		409B3A862766601500200F02 /* CoreDataHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 409B3A852766601500200F02 /* CoreDataHelp */; };
 		409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB526A2612F0024846B /* CLLocation+Extension.swift */; };
-		409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB926A261BB0024846B /* ErrorManager.swift */; };
 		40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0590F26A8F78B00BAE3D5 /* MapView.swift */; };
 		40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 40B2921B269E8018006DC0C8 /* GenericUtilities */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
-		40EEED552730C0C900AE8F11 /* DBRepostory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EEED542730C0C900AE8F11 /* DBRepostory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,10 +78,8 @@
 		408BBF1E269E7AC100B37970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		409681A926A6550200871EBD /* UserActivityDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityDataSourceManager.swift; sourceTree = "<group>"; };
 		409F2AB526A2612F0024846B /* CLLocation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extension.swift"; sourceTree = "<group>"; };
-		409F2AB926A261BB0024846B /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		40A0590F26A8F78B00BAE3D5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		40B2921D269E82BC006DC0C8 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
-		40EEED542730C0C900AE8F11 /* DBRepostory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRepostory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +181,6 @@
 		407E868A26A1187F00D348B9 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				409F2AB826A261B10024846B /* Base */,
 				407E868B26A1188D00D348B9 /* HomeRepository.swift */,
 				4076CB1026A6446200E35DDC /* ActivityRepository.swift */,
 				4026D9022738848800A56B15 /* DetailUserActivityRepository.swift */,
@@ -253,15 +248,6 @@
 				409F2AB526A2612F0024846B /* CLLocation+Extension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		409F2AB826A261B10024846B /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				409F2AB926A261BB0024846B /* ErrorManager.swift */,
-				40EEED542730C0C900AE8F11 /* DBRepostory.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		40A0590E26A8F78100BAE3D5 /* View */ = {
@@ -368,14 +354,12 @@
 				40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */,
 				40097B86275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift in Sources */,
-				409F2ABA26A261BB0024846B /* ErrorManager.swift in Sources */,
 				40097B87275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift in Sources */,
 				408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */,
 				40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */,
 				4076CB1326A644A100E35DDC /* UserActivityEntity.swift in Sources */,
 				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
-				40EEED552730C0C900AE8F11 /* DBRepostory.swift in Sources */,
 				4026D9032738848800A56B15 /* DetailUserActivityRepository.swift in Sources */,
 				4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */,
 				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,

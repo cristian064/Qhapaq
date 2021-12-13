@@ -8,8 +8,9 @@
 import Foundation
 import CoreData
 import GenericUtilities
+import CoreDataHelp
 
-protocol ActivityRepositoryProtocol: DBRepository {
+protocol ActivityRepositoryProtocol: StorageAPI {
     func getAllActivities(text: String,
                           completion: @escaping (ResponseAPI<[ActivityEntity]>) -> Void)
 }

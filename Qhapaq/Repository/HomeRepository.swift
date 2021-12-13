@@ -10,13 +10,18 @@ import CoreLocation
 import Combine
 import CoreData
 import GenericUtilities
+import CoreDataHelp
 
-protocol HomeRepositoryProtocol: DBRepository {
+protocol HomeRepositoryProtocol: StorageAPI {
     func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>)-> Void)
     func getArtWork(completion: @escaping (ResponseAPI<[ArtWorkEntity]>) -> Void)
     func startAdventure(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void)
     func getLocations(completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)
     func stopAdcenture()
+    func save(distance: Double,
+              name: String,
+              locations: [CLLocationProtocol],
+              completion: @escaping (ResponseAPI<Void>) -> Void)
 }
 
 class HomeRepository: HomeRepositoryProtocol {
@@ -62,4 +67,23 @@ class HomeRepository: HomeRepositoryProtocol {
     }
     
     
+    
+    func save(distance: Double,
+              name: String,
+              locations: [CLLocationProtocol],
+              completion: @escaping (ResponseAPI<Void>) -> Void)  {
+        let activity = ActivityEntity(context: StorageProvider.shared.persistentContainer.viewContext)
+        activity.distance = distance
+        activity.date = Date()
+        activity.name = name
+        
+    
+        locations.forEach { location in
+            let locationEntity = ActivityLocationEntity(context: StorageProvider.shared.persistentContainer.viewContext)
+            locationEntity.latitude = location.coordinate.latitude
+            locationEntity.longitude = location.coordinate.longitude
+            activity.addToLocations(locationEntity)
+        }
+        self.saveDB(completion: completion)
+    }
 }
