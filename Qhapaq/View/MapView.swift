@@ -33,7 +33,10 @@ class MapView: UIView {
         mapView.setRegion(.init(center: location.coordinate,
                                 latitudinalMeters: 1000,
                                 longitudinalMeters: 1000), animated: true)
-        mapView.showsUserLocation = true
+    }
+    
+    func currentLocation(isShowed: Bool) {
+        mapView.showsUserLocation = isShowed
     }
     
     func setupView() {

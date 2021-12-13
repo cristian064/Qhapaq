@@ -16,7 +16,7 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     var data: UserActivityModel! {
         didSet {
             titleEventLabel.text = data.name
-            descriptionEventLabel.text = "\(data.distance) km"
+            descriptionEventLabel.text = "\(data.distance/1000) km"
         }
     }
     

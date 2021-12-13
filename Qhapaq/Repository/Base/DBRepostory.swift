@@ -16,9 +16,6 @@ protocol DBRepository: StorageAPI {
               locations: [CLLocationProtocol],
               completion: @escaping (ResponseAPI<Void>) -> Void )
     
-    func getLocationOfAdventure(with name: String,
-                                completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void)
-    
 }
 
 extension DBRepository {
@@ -49,25 +46,6 @@ extension DBRepository {
             completion(.failure(.init(code: 700)))
         }
         
-    }
-    
-    func getAllActivities(text: String,
-                          completion: @escaping (ResponseAPI<[ActivityEntity]>) -> Void ) {
-        let fecthRequest: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
-        if !text.isEmpty{
-            fecthRequest.predicate = NSPredicate(format: "%K CONTAINS[c] %@", #keyPath(ActivityEntity.name), text)
-        }
-        self.getDB(fetchRequest: fecthRequest, completion: completion)
-        
-    }
-    
-    func getLocationOfAdventure(with name: String,
-                                completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void) {
-        
-        let fetchRequest: NSFetchRequest<ActivityLocationEntity> = ActivityLocationEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(ActivityLocationEntity.activity.name), name)
-        
-        self.getDB(fetchRequest: fetchRequest, completion: completion)
     }
     
     func delete(data: ActivityEntity,

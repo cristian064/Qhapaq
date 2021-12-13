@@ -19,12 +19,14 @@ class DetailUserActivityRepository: DetailUserActivityRepositoryProtocol {
     
     
     func getAdventureLocations(with name: String, completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void) {
-        self.getLocationOfAdventure(with: name,
-                                   completion: completion)
+        let fetchRequest: NSFetchRequest<ActivityLocationEntity> = ActivityLocationEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "%K == %@",
+                                             #keyPath(ActivityLocationEntity.activity.name),
+                                             name)
+        self.getDB(fetchRequest: fetchRequest, completion: completion)
     }
     
     deinit{
         print("not retain cycle")
     }
 }
-

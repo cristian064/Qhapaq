@@ -60,6 +60,8 @@ class HomeViewController: UIViewController {
                 return
             }
             self?.saveAdventure.isHidden = statusOfAdventure
+            
+            self?.mapView.currentLocation(isShowed: statusOfAdventure)
         }.store(in: &cancellables)
     }
     
@@ -105,7 +107,6 @@ class HomeViewController: UIViewController {
         self.startAdventureButton.layer.cornerRadius = 25
         self.startAdventureButton.constrainWidth(constant: 200)
         
-//        startAdventureButton.setTitle("Start adventure", for: .normal)
         startAdventureButton.backgroundColor = .green
         
         saveAdventure.setTitle("Save adventure", for: .normal)
@@ -133,16 +134,15 @@ class HomeViewController: UIViewController {
     
     @objc func currentLocationButtonPressed() {
         viewModel.getLocation()
+        self.mapView.currentLocation(isShowed: true)
         
     }
     
     @objc func startAdventureButtonAction() {
         viewModel.startAdventure()
-//        viewModel.getLocations()
     }
     
     @objc func saveAdventureAction() {
-//        viewModel.saveAdventure()
         presentPopUpSave()
     }
     

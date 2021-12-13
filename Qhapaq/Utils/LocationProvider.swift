@@ -40,6 +40,8 @@ class LocationProvider: NSObject {
             self.locationManager.startUpdatingLocation()
             isStartedLocationUpdate = true
             startTrackingAdventure()
+            distance = 0
+            locations = []
         }
     }
     
@@ -53,9 +55,8 @@ class LocationProvider: NSObject {
             isStartedLocationUpdate = false
             locationManager.stopUpdatingLocation()
             locationManager.allowsBackgroundLocationUpdates = false
-            distance = 0
-            locations = []
             locationManager.stopMonitoringSignificantLocationChanges()
+        
         }
     }
     

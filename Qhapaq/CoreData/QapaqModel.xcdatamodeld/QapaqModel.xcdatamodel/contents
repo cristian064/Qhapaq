@@ -12,7 +12,7 @@
         <relationship name="activity" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityEntity" inverseName="locations" inverseEntity="ActivityEntity"/>
     </entity>
     <elements>
-        <element name="ActivityEntity" positionX="-385.3983154296875" positionY="-17.23397827148438" width="128" height="103"/>
+        <element name="ActivityEntity" positionX="-385.3983154296875" positionY="-17.23397827148438" width="128" height="89"/>
         <element name="ActivityLocationEntity" positionX="-63" positionY="9" width="128" height="88"/>
     </elements>
 </model>
