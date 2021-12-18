@@ -35,6 +35,13 @@ class HomeViewController: UIViewController {
 //        viewModel.getArtWork()
 //        viewModel.getLocation()
 //        viewModel.stopLocationUpdate()
+//        if let path = Bundle.main.path(forResource: "Info",
+//                                       ofType: "plist") {
+//            let dictionary = NSDictionary(contentsOf: URL(fileURLWithPath: path))
+//            print(dictionary?["SERVER_URL"])
+//        }
+            
+
     }
     
     func setupBinding() {
