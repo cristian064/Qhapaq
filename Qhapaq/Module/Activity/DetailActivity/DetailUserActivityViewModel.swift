@@ -37,4 +37,15 @@ class DetailUserActivityViewModel: DetailUserActivityViewModelProtocol {
             }
         })
     }
+    
+    func deleteRecord() {
+        datasource.deleteActivity(userDetailInfo: userActivity) {[weak self] responseDatasource in
+            switch responseDatasource {
+            case .success:
+                ()
+            case .failure:
+                ()
+            }
+        }
+    }
 }

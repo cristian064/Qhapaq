@@ -11,15 +11,18 @@ import GenericUtilities
 protocol DetailUserActivityDataSourceProtocol {
     func getAdventureLocations(with name: String,
                                completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)
+    func deleteActivity(userDetailInfo: UserActivityModel,
+                     completion: @escaping (ResponseAPI<Void>)-> Void)
 }
 
 class DetailUserActivityDataSource: DetailUserActivityDataSourceProtocol {
     lazy var repository: DetailUserActivityRepositoryProtocol = DetailUserActivityRepository()
     
     
-    func deleteMovie(userDetailInfo: UserActivityModel,
-                     completion: @escaping (ResponseAPI<Void>)-> Void ) {
-        
+    func deleteActivity(userDetailInfo: UserActivityModel,
+                     completion: @escaping (ResponseAPI<Void>)-> Void) {
+        repository.deleteActivity(userDetailInfo: userDetailInfo,
+                                  completion: completion)
     }
     
     
