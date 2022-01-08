@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E96F053278907AA008C1BD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E96F052278907AA008C1BD7 /* ViewController.swift */; };
+		2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB38278673A600052A80 /* LoginViewController.swift */; };
+		2EEACB3C2786791B00052A80 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2EEACB3B2786791B00052A80 /* Lottie */; };
 		40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */; };
 		40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */; };
 		40097B86275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */; };
@@ -45,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E96F052278907AA008C1BD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2EEACB38278673A600052A80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityLocationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -92,12 +97,22 @@
 			files = (
 				409B3A862766601500200F02 /* CoreDataHelp in Frameworks */,
 				40B2921C269E8018006DC0C8 /* GenericUtilities in Frameworks */,
+				2EEACB3C2786791B00052A80 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EEACB372786737100052A80 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2EEACB38278673A600052A80 /* LoginViewController.swift */,
+				2E96F052278907AA008C1BD7 /* ViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		4026D8FA27385FFC00A56B15 /* UserActivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +135,7 @@
 		4044E7D726A531E2003D57D9 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				2EEACB372786737100052A80 /* Login */,
 				4044E7DA26A533DD003D57D9 /* Main */,
 				4044E7D926A5331A003D57D9 /* Activity */,
 				4044E7D826A531EF003D57D9 /* Home */,
@@ -305,6 +321,7 @@
 			packageProductDependencies = (
 				40B2921B269E8018006DC0C8 /* GenericUtilities */,
 				409B3A852766601500200F02 /* CoreDataHelp */,
+				2EEACB3B2786791B00052A80 /* Lottie */,
 			);
 			productName = Qhapaq;
 			productReference = 408BBF0D269E7AC000B37970 /* Qhapaq.app */;
@@ -336,6 +353,7 @@
 			packageReferences = (
 				40B2921A269E8018006DC0C8 /* XCRemoteSwiftPackageReference "GenericUtilities" */,
 				409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */,
+				2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 408BBF0E269E7AC000B37970 /* Products */;
 			projectDirPath = "";
@@ -375,8 +393,10 @@
 				402D6C9626AD18B200D73478 /* ArtworkMarkerView.swift in Sources */,
 				40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */,
 				4026D9032738848800A56B15 /* DetailUserActivityRepository.swift in Sources */,
+				2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */,
 				4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */,
 				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,
+				2E96F053278907AA008C1BD7 /* ViewController.swift in Sources */,
 				4026D9012738843B00A56B15 /* DetailUserActivityDataSource.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
 				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,
@@ -911,6 +931,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.2.1;
+			};
+		};
 		409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cristian064/CoreDataHelp";
@@ -930,6 +958,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2EEACB3B2786791B00052A80 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		409B3A852766601500200F02 /* CoreDataHelp */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */;
