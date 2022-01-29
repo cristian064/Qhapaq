@@ -14,12 +14,11 @@ protocol DetailUserActivityRepositoryProtocol: StorageAPI {
     func getAdventureLocations(with name: String,
                                completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void)
     func deleteActivity(userDetailInfo: UserActivityModel,
-                     completion: @escaping (ResponseAPI<Void>) -> Void)
+                        completion: @escaping (ResponseAPI<Void>) -> Void)
 }
 
 class DetailUserActivityRepository: DetailUserActivityRepositoryProtocol {
     var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
-    
     
     func getAdventureLocations(with name: String,
                                completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void) {

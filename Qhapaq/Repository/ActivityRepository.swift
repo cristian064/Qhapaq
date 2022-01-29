@@ -18,12 +18,11 @@ protocol ActivityRepositoryProtocol: StorageAPI {
 class ActivityRepository: ActivityRepositoryProtocol {
     var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
     
-    
     func getAllActivities(text: String,
                           completion: @escaping (ResponseAPI<[ActivityEntity]>) -> Void) {
         let fetchRequest: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
         fetchRequest.sortDescriptors = [.init(key: #keyPath(ActivityEntity.date), ascending: false)]
-        if !text.isEmpty{
+        if !text.isEmpty {
             fetchRequest.predicate = NSPredicate(format: "%K CONTAINS[c] %@", #keyPath(ActivityEntity.name), text)
         }
         self.getDB(fetchRequest: fetchRequest, completion: completion)

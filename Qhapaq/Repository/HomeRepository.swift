@@ -13,7 +13,7 @@ import GenericUtilities
 import CoreDataHelp
 
 protocol HomeRepositoryProtocol: StorageAPI {
-    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>)-> Void)
+    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>) -> Void)
     func getArtWork(completion: @escaping (ResponseAPI<[ArtWorkEntity]>) -> Void)
     func startAdventure(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void)
     func getLocations(completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)
@@ -29,7 +29,7 @@ class HomeRepository: HomeRepositoryProtocol {
     
     private var cancellables = Set<AnyCancellable>()
     lazy var locationProvider = LocationProvider()
-    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>)-> Void) {
+    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>) -> Void) {
         guard let currentLocation = locationProvider.currentLocation else {
             return completion(.failure(.init(code: 1000)))
         }
@@ -50,11 +50,10 @@ class HomeRepository: HomeRepositoryProtocol {
     }
     
     func getDistance(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void) {
-        locationProvider.completionDistance = {[weak self] distance in
+        locationProvider.completionDistance = { [weak self] distance in
             print(distance)
         }
     }
-    
     
     func stopAdcenture() {
         locationProvider.stop()
@@ -66,18 +65,15 @@ class HomeRepository: HomeRepositoryProtocol {
         }.store(in: &cancellables)
     }
     
-    
-    
     func save(distance: Double,
               name: String,
               locations: [CLLocationProtocol],
-              completion: @escaping (ResponseAPI<Void>) -> Void)  {
+              completion: @escaping (ResponseAPI<Void>) -> Void) {
         let activity = ActivityEntity(context: StorageProvider.shared.persistentContainer.viewContext)
         activity.distance = distance
         activity.date = Date()
         activity.name = name
         
-    
         locations.forEach { location in
             let locationEntity = ActivityLocationEntity(context: StorageProvider.shared.persistentContainer.viewContext)
             locationEntity.latitude = location.coordinate.latitude

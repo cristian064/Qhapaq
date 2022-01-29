@@ -41,7 +41,6 @@ class HomeViewController: UIViewController {
 //            print(dictionary?["SERVER_URL"])
 //        }
             
-
     }
     
     func setupBinding() {
@@ -62,7 +61,7 @@ class HomeViewController: UIViewController {
         }.store(in: &cancellables)
         
         viewModel.statusAdventureSubject.sink {[weak self] statusOfAdventure in
-            if let isFirstLoaded = self?.isFirstLoaded, isFirstLoaded{
+            if let isFirstLoaded = self?.isFirstLoaded, isFirstLoaded {
                 self?.isFirstLoaded = false
                 return
             }
@@ -80,8 +79,6 @@ class HomeViewController: UIViewController {
         self.view.addSubview(mapView)
         self.view.addSubview(containerOptionStackView)
         self.view.addSubview(distanceAdventureLabel)
-        
-        
         
         mapView.anchor(top: self.view.topAnchor,
                        leading: self.view.leadingAnchor,
@@ -101,9 +98,6 @@ class HomeViewController: UIViewController {
                                      trailing: self.view.trailingAnchor,
                                      padding: .init(top: 0, left: 0, bottom: 16, right: 16))
 
-        
-        
-        
         containerOptionStackView.spacing = 10
         containerOptionStackView.axis = .vertical
         containerOptionStackView.alignment = .trailing
@@ -129,13 +123,11 @@ class HomeViewController: UIViewController {
         currentLocationButton.addTarget(self, action: #selector(currentLocationButtonPressed),
                                         for: .touchUpInside)
         
-        
         currentLocationButton.setImage(UIImage(systemName: "location"), for: .normal)
         currentLocationButton.backgroundColor = .white
         
         currentLocationButton.layer.shadowColor = UIColor.black.cgColor
         currentLocationButton.layer.shadowOffset = .init(width: 1, height: 1)
-        
         
     }
     
@@ -164,15 +156,13 @@ class HomeViewController: UIViewController {
         
         alerView.addAction(UIAlertAction(title: "save",
                                          style: .default, handler: {[weak self] _ in
-            if let nameAdventure = alerView.textFields?.first?.text{
+            if let nameAdventure = alerView.textFields?.first?.text {
                 self?.saveAdventure(name: nameAdventure)
             }
             alerView.dismiss(animated: false, completion: nil)
         }))
         
         alerView.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
-        
-        
         
         self.present(alerView, animated: false, completion: nil)
     }
@@ -182,4 +172,3 @@ class HomeViewController: UIViewController {
     }
     
 }
-

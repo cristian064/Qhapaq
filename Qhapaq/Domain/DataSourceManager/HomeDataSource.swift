@@ -11,7 +11,7 @@ import GenericUtilities
 
 protocol HomeDataSourceProtocol {
     var repository: HomeRepositoryProtocol {get}
-    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>)-> Void)
+    func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>) -> Void)
     func getArtWork(completion: @escaping (ResponseAPI<[ArtWorkModel]>) -> Void)
     func startAdventure(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void)
     func getLocations(completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)

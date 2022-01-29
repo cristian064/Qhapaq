@@ -15,5 +15,3 @@ struct ArtWorkEntity: Codable {
     let longitude: Double?
     
 }
-
-

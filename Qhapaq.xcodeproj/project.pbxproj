@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E96F053278907AA008C1BD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E96F052278907AA008C1BD7 /* ViewController.swift */; };
 		2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB38278673A600052A80 /* LoginViewController.swift */; };
 		2EEACB3C2786791B00052A80 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2EEACB3B2786791B00052A80 /* Lottie */; };
 		40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */; };
@@ -48,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E96F052278907AA008C1BD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2EEACB38278673A600052A80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				2EEACB38278673A600052A80 /* LoginViewController.swift */,
-				2E96F052278907AA008C1BD7 /* ViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -312,6 +309,7 @@
 				408BBF09269E7AC000B37970 /* Sources */,
 				408BBF0A269E7AC000B37970 /* Frameworks */,
 				408BBF0B269E7AC000B37970 /* Resources */,
+				2EFD058927A5DAC2005600D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -376,6 +374,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2EFD058927A5DAC2005600D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		408BBF09269E7AC000B37970 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -396,7 +414,6 @@
 				2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */,
 				4082C10E272516B900D0A571 /* StorageProvider.swift in Sources */,
 				4079CE0726ACEB510098629F /* Annotation.swift in Sources */,
-				2E96F053278907AA008C1BD7 /* ViewController.swift in Sources */,
 				4026D9012738843B00A56B15 /* DetailUserActivityDataSource.swift in Sources */,
 				407E868926A117D700D348B9 /* HomeViewModel.swift in Sources */,
 				4044E7DE26A53441003D57D9 /* MainTabBarController.swift in Sources */,

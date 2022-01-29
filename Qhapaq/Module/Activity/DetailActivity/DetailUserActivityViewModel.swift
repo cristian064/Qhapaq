@@ -12,9 +12,8 @@ protocol DetailUserActivityViewModelProtocol: AnyObject {
     var userActivity: UserActivityModel {get}
     var adventureTitle: String {get}
     func getAdventureLocations()
-    var locationsOfAdventureSubject : CurrentValueSubject<[CLLocationProtocol], Never> {get set}
+    var locationsOfAdventureSubject: CurrentValueSubject<[CLLocationProtocol], Never> {get set}
 }
-
 
 class DetailUserActivityViewModel: DetailUserActivityViewModelProtocol {
     var userActivity: UserActivityModel
@@ -24,7 +23,6 @@ class DetailUserActivityViewModel: DetailUserActivityViewModelProtocol {
     init(userActivity: UserActivityModel) {
         self.userActivity = userActivity
     }
-    
     
     func getAdventureLocations() {
         datasource.getAdventureLocations(with: userActivity.name,

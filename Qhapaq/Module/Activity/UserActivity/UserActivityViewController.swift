@@ -30,12 +30,11 @@ class UserActivityViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let prefersLargeTitles = self.navigationController?.navigationBar.prefersLargeTitles,
-           !prefersLargeTitles{
+           !prefersLargeTitles {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
         viewModel.getUserActivities()
     }
-    
     
     func callWebServices() {
 //        viewModel.getUserActivities()
@@ -53,8 +52,8 @@ class UserActivityViewController: UICollectionViewController {
         self.viewModel.elementsSubject.sink {[weak self] _ in
             self?.collectionView.reloadData()
         }.store(in: &cancellables)
+        
     }
-    
     
     func setupCollectionView() {
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
@@ -87,7 +86,6 @@ extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
         let detailUserActivity = DetailUserActivityViewController(userActivity: data)
         self.navigationController?.pushViewController(detailUserActivity, animated: false)
     }
-    
     
 }
 

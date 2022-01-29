@@ -30,7 +30,6 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func setupView() {
         self.backgroundColor = .white
         self.contentView.addSubview(stackView)

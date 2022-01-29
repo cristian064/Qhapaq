@@ -20,11 +20,10 @@ protocol HomeViewModelProtocol: AnyObject {
     var locationSubject: CurrentValueSubject<CLLocationProtocol, Never> {get set}
     var annotationsSubject: CurrentValueSubject<[ArtWorkModel], Never> {get set}
     var distanceOfAdventureSubject: CurrentValueSubject<CLLocationDistance, Never> {get set}
-    var locationsSubject:  CurrentValueSubject<[CLLocationProtocol], Never> {get set}
-    var titleAdventureSubject:  CurrentValueSubject<String, Never> {get set}
-    var statusAdventureSubject: CurrentValueSubject<Bool,Never>{get set}
+    var locationsSubject: CurrentValueSubject<[CLLocationProtocol], Never> {get set}
+    var titleAdventureSubject: CurrentValueSubject<String, Never> {get set}
+    var statusAdventureSubject: CurrentValueSubject<Bool, Never> {get set}
     
-
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -34,16 +33,13 @@ class HomeViewModel: HomeViewModelProtocol {
     var annotationsSubject = CurrentValueSubject<[ArtWorkModel], Never>([])
     var distanceOfAdventureSubject = CurrentValueSubject<CLLocationDistance, Never>(CLLocationDistance())
     var locationsSubject = CurrentValueSubject<[CLLocationProtocol], Never>([])
-    var titleAdventureSubject:  CurrentValueSubject<String, Never>
-    var statusAdventureSubject: CurrentValueSubject<Bool,Never>
-    
-    
+    var titleAdventureSubject: CurrentValueSubject<String, Never>
+    var statusAdventureSubject: CurrentValueSubject<Bool, Never>
     
     init() {
         titleAdventureSubject = .init("Start")
         statusAdventureSubject = .init(false)
     }
-    
     
     func viewDidLoad() {
         stopLocationUpdate()

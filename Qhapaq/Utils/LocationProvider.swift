@@ -16,14 +16,14 @@ class LocationProvider: NSObject {
     var currentLocation: CLLocation? {
         return locationManager.location
     }
-    private var distanceLocations : [CLLocation] = []
+    private var distanceLocations: [CLLocation] = []
     private var isStartedLocationUpdate = false
-    private var locations : [CLLocation] = []{
+    private var locations: [CLLocation] = [] {
         didSet {
             locationsSubject.value = locations
         }
     }
-    var completionDistance : ((ResponseAPI<CLLocationDistance>) -> Void )?
+    var completionDistance: ((ResponseAPI<CLLocationDistance>) -> Void )?
     var locationsSubject = CurrentValueSubject<[CLLocationProtocol], Never>([])
     override init() {
         self.locationManager = CLLocationManager()
@@ -49,9 +49,8 @@ class LocationProvider: NSObject {
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.activityType = .automotiveNavigation
     }
-    
     func stop() {
-        if isStartedLocationUpdate{
+        if isStartedLocationUpdate {
             isStartedLocationUpdate = false
             locationManager.stopUpdatingLocation()
             locationManager.allowsBackgroundLocationUpdates = false
@@ -65,16 +64,13 @@ class LocationProvider: NSObject {
             if let oldLocation = distanceLocations.last {
                 distanceLocations = [oldLocation, location]
             }
-        }else {
+        } else {
             distanceLocations.append(location)
         }
         calculateTheDistance()
     }
-    
-    
-    
-    var distance : CLLocationDistance = 0{
-        didSet{
+    var distance: CLLocationDistance = 0 {
+        didSet {
             completionDistance?(.success(distance))
         }
     }
@@ -86,15 +82,13 @@ class LocationProvider: NSObject {
             
             let fakeDistance = newLocation.distance(from: oldLocation)
             if fakeDistance > 10 {
-                distance = distance + fakeDistance
+                distance += fakeDistance
             }
-           
         }
-        
     }
     
     func validateLocationsUpate(with location: CLLocation) {
-        guard let lastLocation = locations.last else{
+        guard let lastLocation = locations.last else {
             locations.append(location)
             return
         }
@@ -105,21 +99,17 @@ class LocationProvider: NSObject {
 }
 
 extension LocationProvider: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             ()
         default:
             ()
-        
         }
     }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {return}
         validationLocation(location: location)
         validateLocationsUpate(with: location)
     }
-    
 }

@@ -28,7 +28,7 @@ class UserActivityDataSourceManager: UserActivityDataSourceManagerProtocol {
         })
     }
     
-    func transformActivityToModel(userActivitiesEntity: [ActivityEntity]) -> [UserActivityModel]{
+    func transformActivityToModel(userActivitiesEntity: [ActivityEntity]) -> [UserActivityModel] {
         return userActivitiesEntity.map { userActivitieEntity -> UserActivityModel? in
             guard let date = userActivitieEntity.date,
                     let name = userActivitieEntity.name else {

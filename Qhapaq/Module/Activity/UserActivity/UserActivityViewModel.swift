@@ -22,10 +22,6 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
     var cancellables = Set<AnyCancellable>()
     lazy var dataSourceManger = UserActivityDataSourceManager()
     
-    
-    
-    
-    
     func getUserActivities() {
         dataSourceManger.getActivities(text: "") {[weak self] response in
             switch response {
@@ -36,7 +32,6 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
             }
         }
     }
-    
     
     func searchRoute(with text: String?) {
         dataSourceManger.getActivities(text: text ?? "") {[weak self] response in
@@ -51,7 +46,7 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
     
     func setupSubscribeActionFromUI() {
         searchSubject.debounce(for: 1, scheduler: DispatchQueue.main)
-            .filter({$0.count > 0})
+            .filter({$0.count > 2})
             .removeDuplicates()
             .sink {[weak self] text in
                 self?.searchRoute(with: text)

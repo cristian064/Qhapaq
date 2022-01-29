@@ -12,21 +12,18 @@ import MapKit
 
 class DetailUserActivityViewController: UIViewController {
 
-    
     let viewModel: DetailUserActivityViewModelProtocol
     let adventureMapView =  MapView()
     let nameAdventure = UILabel()
     let detailAdventure = UILabel()
     var cancellables = Set<AnyCancellable>()
-    lazy var stackView : UIStackView = .init(arrangedSubviews: [nameAdventure,
+    lazy var stackView: UIStackView = .init(arrangedSubviews: [nameAdventure,
                                                                 detailAdventure,
                                                                 adventureMapView])
     init(userActivity: UserActivityModel) {
         self.viewModel = DetailUserActivityViewModel(userActivity: userActivity)
         super.init(nibName: nil, bundle: nil)
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -69,7 +66,7 @@ class DetailUserActivityViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.title = self.viewModel.adventureTitle
         self.navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .trash,
-                                                       target:self,
+                                                       target: self,
                                                        action: #selector(deleteActivityButtonPressed))
     }
     

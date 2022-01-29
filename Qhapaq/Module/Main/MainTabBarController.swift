@@ -36,7 +36,9 @@ class MainTabBarController: UITabBarController {
         self.tabBar.isTranslucent = false
     }
     
-    private func createNavController(viewController : UIViewController , title : String , imageName : String) -> UIViewController{
+    private func createNavController(viewController: UIViewController,
+                                     title: String,
+                                     imageName: String) -> UIViewController {
         viewController.navigationItem.title = title
         let navController = UINavigationController(rootViewController: viewController)
         navController.navigationBar.isTranslucent = false

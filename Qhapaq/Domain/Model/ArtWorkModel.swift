@@ -16,12 +16,10 @@ struct ArtWorkModel {
     let longitude: Double
     
     
-    var annotation: Annotation{
+    var annotation: Annotation {
         return .init(coordinate: .init(latitude: lat,
                                        longitude: longitude),
                      title: title,
                      locationName: locationName)
     }
 }
-
-
