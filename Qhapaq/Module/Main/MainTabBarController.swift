@@ -21,8 +21,6 @@ class MainTabBarController: UITabBarController {
         createNavController(viewController: userActivityViewController,
                             title: "Activity", imageName: "clock.arrow.circlepath")]
         
-//        self.tabBar.backgroundColor = .lightGray
-        
         if #available(iOS 13.0, *) {
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithDefaultBackground()
