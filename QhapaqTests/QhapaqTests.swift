@@ -27,7 +27,7 @@ class QhapaqTests: XCTestCase {
         viewModel.getLocation()
         let location = AdventureLocationModel(coordinate: .init(latitude: 70, longitude: 70))
         XCTAssertEqual(viewModel.locationSubject.value.coordinate.latitude, location.coordinate.latitude)
-        XCTAssertEqual(viewModel.locationSubject.value.coordinate.longitude, 80)
+        XCTAssertEqual(viewModel.locationSubject.value.coordinate.longitude, location.coordinate.longitude)
     }
     
     override func tearDown() {
