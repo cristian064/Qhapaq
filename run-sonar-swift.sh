@@ -319,7 +319,9 @@ fi
 runCommand  xcodebuild.log "${buildCmd[@]}"
 #oclint-xcodebuild # Transform the xcodebuild.log file into a compile_command.json file
 cat xcodebuild.log | $XCPRETTY_CMD -r json-compilation-database -o compile_commands.json
-
+echo "cal"
+echo $XCPRETTY_CMD -r json-compilation-database -o compile_commands.json
+echo "end"
 # Objective-C code detection
 hasObjC="no"
 compileCmdFile=compile_commands.json
