@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 #
 # backelite-sonar-swift-plugin - Enables analysis of Swift and Objective-C projects into SonarQube.
 # Copyright © 2015 Backelite (${email})
