@@ -10,6 +10,7 @@ import Combine
 import CoreLocation
 
 protocol HomeViewModelProtocol: AnyObject {
+    var homeDataSource: HomeDataSourceProtocol {get set} 
     func getLocation()
     func getLocations()
     func getArtWork()
