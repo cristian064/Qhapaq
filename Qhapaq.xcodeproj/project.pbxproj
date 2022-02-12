@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E4F7C7127B751DB00FC53ED /* NotificationsHelp */; };
 		2E4F7C7527B7525900FC53ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7727B7525900FC53ED /* Localizable.strings */; };
+		2E4F7C7B27B7538700FC53ED /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7A27B7538700FC53ED /* Constans.swift */; };
 		2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */; };
 		2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */; };
 		2EB7D71327AB3F7700B648E2 /* QhapaqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */; };
@@ -64,6 +65,7 @@
 		2E4F7C7627B7525900FC53ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2E4F7C7827B7529E00FC53ED /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2E4F7C7927B7529E00FC53ED /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2E4F7C7A27B7538700FC53ED /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EA7657E27B602A50049DC5C /* Qhapaq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qhapaq.entitlements; sourceTree = "<group>"; };
 		2EB7D71027AB3F7700B648E2 /* QhapaqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QhapaqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,7 @@
 				40B2921D269E82BC006DC0C8 /* LocationProvider.swift */,
 				4082C10D272516B900D0A571 /* StorageProvider.swift */,
 				2E4F7C7727B7525900FC53ED /* Localizable.strings */,
+				2E4F7C7A27B7538700FC53ED /* Constans.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				4044E7E026A537D0003D57D9 /* UserActivityViewModel.swift in Sources */,
 				40097B86275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift in Sources */,
+				2E4F7C7B27B7538700FC53ED /* Constans.swift in Sources */,
 				40097B87275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataProperties.swift in Sources */,
 				408BBF11269E7AC000B37970 /* AppDelegate.swift in Sources */,
 				40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */,

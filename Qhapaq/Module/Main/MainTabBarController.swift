@@ -16,10 +16,11 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [createNavController(viewController: homeViewController,
-                                               title: "home",
+                                               title: Constans.Localizable.titleHomeMenu,
                                                imageName: "bicycle"),
         createNavController(viewController: userActivityViewController,
-                            title: "Activity", imageName: "clock.arrow.circlepath")]
+                            title: Constans.Localizable.titleActivityMenu,
+                            imageName: "clock.arrow.circlepath")]
         
         if #available(iOS 13.0, *) {
             let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
