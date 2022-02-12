@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E4F7C4F27B6D9D200FC53ED /* NotificationsHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E4F7C4E27B6D9D200FC53ED /* NotificationsHelp */; };
+		2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */; };
 		2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */; };
 		2EB7D71327AB3F7700B648E2 /* QhapaqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */; };
 		2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB38278673A600052A80 /* LoginViewController.swift */; };
@@ -58,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E4F7C4C27B6D9A500FC53ED /* NotificationsHelp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = NotificationsHelp; path = ../NotificationsHelp; sourceTree = "<group>"; };
+		2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2EA7657E27B602A50049DC5C /* Qhapaq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qhapaq.entitlements; sourceTree = "<group>"; };
 		2EB7D71027AB3F7700B648E2 /* QhapaqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QhapaqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QhapaqTests.swift; sourceTree = "<group>"; };
 		2EEACB38278673A600052A80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E4F7C4F27B6D9D200FC53ED /* NotificationsHelp in Frameworks */,
 				409B3A862766601500200F02 /* CoreDataHelp in Frameworks */,
 				2EEACB3C2786791B00052A80 /* Lottie in Frameworks */,
 				2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */,
@@ -122,6 +128,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E4F7C4B27B6D9A500FC53ED /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				2E4F7C4C27B6D9A500FC53ED /* NotificationsHelp */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		2E4F7C4D27B6D9D200FC53ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2EB7D71127AB3F7700B648E2 /* QhapaqTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,9 +275,11 @@
 		408BBF04269E7AC000B37970 = {
 			isa = PBXGroup;
 			children = (
+				2E4F7C4B27B6D9A500FC53ED /* Packages */,
 				408BBF0F269E7AC000B37970 /* Qhapaq */,
 				2EB7D71127AB3F7700B648E2 /* QhapaqTests */,
 				408BBF0E269E7AC000B37970 /* Products */,
+				2E4F7C4D27B6D9D200FC53ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,6 +295,7 @@
 		408BBF0F269E7AC000B37970 /* Qhapaq */ = {
 			isa = PBXGroup;
 			children = (
+				2EA7657E27B602A50049DC5C /* Qhapaq.entitlements */,
 				40714610276E87ED0010C3B3 /* Schemes */,
 				4082C10C2725167800D0A571 /* Utils */,
 				40A90B0326DD5F23009F10A7 /* CoreData */,
@@ -285,6 +309,7 @@
 				408BBF19269E7AC100B37970 /* Assets.xcassets */,
 				408BBF1B269E7AC100B37970 /* LaunchScreen.storyboard */,
 				408BBF1E269E7AC100B37970 /* Info.plist */,
+				2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */,
 			);
 			path = Qhapaq;
 			sourceTree = "<group>";
@@ -368,6 +393,7 @@
 				409B3A852766601500200F02 /* CoreDataHelp */,
 				2EEACB3B2786791B00052A80 /* Lottie */,
 				2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */,
+				2E4F7C4E27B6D9D200FC53ED /* NotificationsHelp */,
 			);
 			productName = Qhapaq;
 			productReference = 408BBF0D269E7AC000B37970 /* Qhapaq.app */;
@@ -429,6 +455,7 @@
 			files = (
 				408BBF1D269E7AC100B37970 /* LaunchScreen.storyboard in Resources */,
 				408BBF1A269E7AC100B37970 /* Assets.xcassets in Resources */,
+				2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1038,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Qhapaq/Qhapaq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3H95D45CM;
 				INFOPLIST_FILE = Qhapaq/Info.plist;
@@ -1086,6 +1114,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Qhapaq/Qhapaq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3H95D45CM;
 				INFOPLIST_FILE = Qhapaq/Info.plist;
@@ -1167,6 +1196,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Qhapaq/Qhapaq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3H95D45CM;
 				INFOPLIST_FILE = Qhapaq/Info.plist;
@@ -1242,6 +1272,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Qhapaq/Qhapaq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3H95D45CM;
 				INFOPLIST_FILE = Qhapaq/Info.plist;
@@ -1317,6 +1348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Qhapaq/Qhapaq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3H95D45CM;
 				INFOPLIST_FILE = Qhapaq/Info.plist;
@@ -1398,6 +1430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Qhapaq/Qhapaq.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3H95D45CM;
 				INFOPLIST_FILE = Qhapaq/Info.plist;
@@ -1484,6 +1517,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E4F7C4E27B6D9D200FC53ED /* NotificationsHelp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NotificationsHelp;
+		};
 		2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */;
