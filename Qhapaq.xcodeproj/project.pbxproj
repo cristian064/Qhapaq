@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E4F7C4F27B6D9D200FC53ED /* NotificationsHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E4F7C4E27B6D9D200FC53ED /* NotificationsHelp */; };
+		2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E4F7C7127B751DB00FC53ED /* NotificationsHelp */; };
+		2E4F7C7527B7525900FC53ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7727B7525900FC53ED /* Localizable.strings */; };
 		2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */; };
 		2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */; };
 		2EB7D71327AB3F7700B648E2 /* QhapaqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */; };
@@ -60,7 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E4F7C4C27B6D9A500FC53ED /* NotificationsHelp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = NotificationsHelp; path = ../NotificationsHelp; sourceTree = "<group>"; };
+		2E4F7C7627B7525900FC53ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2E4F7C7827B7529E00FC53ED /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		2E4F7C7927B7529E00FC53ED /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EA7657E27B602A50049DC5C /* Qhapaq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qhapaq.entitlements; sourceTree = "<group>"; };
 		2EB7D71027AB3F7700B648E2 /* QhapaqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QhapaqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E4F7C4F27B6D9D200FC53ED /* NotificationsHelp in Frameworks */,
+				2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */,
 				409B3A862766601500200F02 /* CoreDataHelp in Frameworks */,
 				2EEACB3C2786791B00052A80 /* Lottie in Frameworks */,
 				2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */,
@@ -128,14 +131,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E4F7C4B27B6D9A500FC53ED /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				2E4F7C4C27B6D9A500FC53ED /* NotificationsHelp */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		2E4F7C4D27B6D9D200FC53ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +263,7 @@
 			children = (
 				40B2921D269E82BC006DC0C8 /* LocationProvider.swift */,
 				4082C10D272516B900D0A571 /* StorageProvider.swift */,
+				2E4F7C7727B7525900FC53ED /* Localizable.strings */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -275,7 +271,6 @@
 		408BBF04269E7AC000B37970 = {
 			isa = PBXGroup;
 			children = (
-				2E4F7C4B27B6D9A500FC53ED /* Packages */,
 				408BBF0F269E7AC000B37970 /* Qhapaq */,
 				2EB7D71127AB3F7700B648E2 /* QhapaqTests */,
 				408BBF0E269E7AC000B37970 /* Products */,
@@ -393,7 +388,7 @@
 				409B3A852766601500200F02 /* CoreDataHelp */,
 				2EEACB3B2786791B00052A80 /* Lottie */,
 				2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */,
-				2E4F7C4E27B6D9D200FC53ED /* NotificationsHelp */,
+				2E4F7C7127B751DB00FC53ED /* NotificationsHelp */,
 			);
 			productName = Qhapaq;
 			productReference = 408BBF0D269E7AC000B37970 /* Qhapaq.app */;
@@ -424,12 +419,14 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = 408BBF04269E7AC000B37970;
 			packageReferences = (
 				409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */,
 				2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */,
+				2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */,
 			);
 			productRefGroup = 408BBF0E269E7AC000B37970 /* Products */;
 			projectDirPath = "";
@@ -454,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				408BBF1D269E7AC100B37970 /* LaunchScreen.storyboard in Resources */,
+				2E4F7C7527B7525900FC53ED /* Localizable.strings in Resources */,
 				408BBF1A269E7AC100B37970 /* Assets.xcassets in Resources */,
 				2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */,
 			);
@@ -540,10 +538,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2E4F7C7727B7525900FC53ED /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E4F7C7627B7525900FC53ED /* en */,
+				2E4F7C7927B7529E00FC53ED /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		408BBF1B269E7AC100B37970 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				408BBF1C269E7AC100B37970 /* Base */,
+				2E4F7C7827B7529E00FC53ED /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -975,6 +983,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1057,6 +1066,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1133,6 +1143,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1215,6 +1226,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1291,6 +1303,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1367,6 +1380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1490,6 +1504,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cristian064/NotificationsHelp.git";
+			requirement = {
+				branch = feature/req001;
+				kind = branch;
+			};
+		};
 		2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cristian064/GenericUtilities.git";
@@ -1517,8 +1539,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2E4F7C4E27B6D9D200FC53ED /* NotificationsHelp */ = {
+		2E4F7C7127B751DB00FC53ED /* NotificationsHelp */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */;
 			productName = NotificationsHelp;
 		};
 		2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */ = {

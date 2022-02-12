@@ -119,6 +119,15 @@
         }
       },
       {
+        "package": "NotificationsHelp",
+        "repositoryURL": "https://github.com/cristian064/NotificationsHelp.git",
+        "state": {
+          "branch": "feature/req001",
+          "revision": "dadf7f9b2aa50460d4a87b5096d90e19eacee3ef",
+          "version": null
+        }
+      },
+      {
         "package": "Promises",
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
