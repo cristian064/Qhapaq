@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>203056906326-aj2rdsqqiuru7j52qqluv6ea0o1tm4o0.apps.googleusercontent.com</string>
+	<string>297337685410-so7quhq6bqlugcc2gdfubhosttkp2ddp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.203056906326-aj2rdsqqiuru7j52qqluv6ea0o1tm4o0</string>
+	<string>com.googleusercontent.apps.297337685410-so7quhq6bqlugcc2gdfubhosttkp2ddp</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAgq2uwo93P-Z8CYV3YRnM66TMwSAzkg7U</string>
+	<string>AIzaSyB8ZhoNyJxBXyNVQp_m_7KTp765pKB_IlU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>203056906326</string>
+	<string>297337685410</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.cal.Qhapaq</string>
 	<key>PROJECT_ID</key>
-	<string>qhapaq-b99c4</string>
+	<string>qhapaqrunning</string>
 	<key>STORAGE_BUCKET</key>
-	<string>qhapaq-b99c4.appspot.com</string>
+	<string>qhapaqrunning.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:203056906326:ios:78fdb4ae730b6f3ae6fbf7</string>
+	<string>1:297337685410:ios:65539155bdb597b71f9efb</string>
 </dict>
 </plist>

@@ -8,6 +8,13 @@
 import Foundation
 import MapKit
 
+struct UserActivityPaginated: PaginationProtocol {
+    var pageNumber: Int
+    var pageSize: Int
+    let activities: [UserActivityModel]
+}
+
+
 struct UserActivityModel {
     let distance: Double
     let name: String
@@ -17,3 +24,5 @@ struct UserActivityModel {
 struct AdventureLocationModel: CLLocationProtocol {
     var coordinate: CLLocationCoordinate2D
 }
+
+

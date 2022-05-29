@@ -10,11 +10,11 @@
 		2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E4F7C7127B751DB00FC53ED /* NotificationsHelp */; };
 		2E4F7C7527B7525900FC53ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7727B7525900FC53ED /* Localizable.strings */; };
 		2E4F7C7B27B7538700FC53ED /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7A27B7538700FC53ED /* Constans.swift */; };
-		2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */; };
 		2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */; };
 		2EB7D71327AB3F7700B648E2 /* QhapaqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */; };
 		2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB38278673A600052A80 /* LoginViewController.swift */; };
 		2EEACB3C2786791B00052A80 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2EEACB3B2786791B00052A80 /* Lottie */; };
+		2EEC0A8127D9AA410056B852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC0A8027D9AA400056B852 /* GoogleService-Info.plist */; };
 		40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */; };
 		40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */; };
 		40097B86275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */; };
@@ -66,11 +66,11 @@
 		2E4F7C7827B7529E00FC53ED /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2E4F7C7927B7529E00FC53ED /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2E4F7C7A27B7538700FC53ED /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
-		2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2EA7657E27B602A50049DC5C /* Qhapaq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qhapaq.entitlements; sourceTree = "<group>"; };
 		2EB7D71027AB3F7700B648E2 /* QhapaqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QhapaqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QhapaqTests.swift; sourceTree = "<group>"; };
 		2EEACB38278673A600052A80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2EEC0A8027D9AA400056B852 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		40097B82275C5E9A00E4C036 /* ActivityLocationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityLocationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				408BBF19269E7AC100B37970 /* Assets.xcassets */,
 				408BBF1B269E7AC100B37970 /* LaunchScreen.storyboard */,
 				408BBF1E269E7AC100B37970 /* Info.plist */,
-				2EA7657C27B5F9E50049DC5C /* GoogleService-Info.plist */,
+				2EEC0A8027D9AA400056B852 /* GoogleService-Info.plist */,
 			);
 			path = Qhapaq;
 			sourceTree = "<group>";
@@ -454,9 +454,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				408BBF1D269E7AC100B37970 /* LaunchScreen.storyboard in Resources */,
+				2EEC0A8127D9AA410056B852 /* GoogleService-Info.plist in Resources */,
 				2E4F7C7527B7525900FC53ED /* Localizable.strings in Resources */,
 				408BBF1A269E7AC100B37970 /* Assets.xcassets in Resources */,
-				2EA7657D27B5F9E50049DC5C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

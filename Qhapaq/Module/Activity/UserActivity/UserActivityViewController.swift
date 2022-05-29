@@ -69,12 +69,12 @@ extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
                                                             for: indexPath) as? ActivityCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.data = self.viewModel.elementsSubject.value[indexPath.row]
+        cell.data = self.viewModel.elements[indexPath.row]
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.elementsSubject.value.count
+        return self.viewModel.elements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -82,7 +82,7 @@ extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let data = self.viewModel.elementsSubject.value[indexPath.row]
+        let data = self.viewModel.elements[indexPath.row]
         let detailUserActivity = DetailUserActivityViewController(userActivity: data)
         self.navigationController?.pushViewController(detailUserActivity, animated: false)
     }
