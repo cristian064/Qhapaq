@@ -30,7 +30,7 @@ class DetailUserActivityViewModel: DetailUserActivityViewModelProtocol {
             switch responseDatasource {
             case .success(let adventureModel):
                 self?.locationsOfAdventureSubject.value = adventureModel
-            case .failure(let error):
+            case .failure:
                 ()
             }
         })

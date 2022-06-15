@@ -10,18 +10,19 @@ import CoreData
 import GenericUtilities
 import CoreDataHelp
 
-protocol DetailUserActivityRepositoryProtocol: StorageAPI {
+protocol DetailUserActivityRepositoryProtocol: StorageDB {
     func getAdventureLocations(with name: String,
-                               completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void)
+                               completion: @escaping (ResponseDB<[ActivityLocationEntity]>) -> Void)
     func deleteActivity(userDetailInfo: UserActivityModel,
-                        completion: @escaping (ResponseAPI<Void>) -> Void)
+                        completion: @escaping (ResponseDB<Void>) -> Void)
 }
 
 class DetailUserActivityRepository: DetailUserActivityRepositoryProtocol {
-    var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
+//    var storageProvider: StorageProviderProtocol =
     
+    var storageProvider: StorageProviderProtocol = StorageProvider.shared
     func getAdventureLocations(with name: String,
-                               completion: @escaping (ResponseAPI<[ActivityLocationEntity]>) -> Void) {
+                               completion: @escaping (ResponseDB<[ActivityLocationEntity]>) -> Void) {
         let fetchRequest: NSFetchRequest<ActivityLocationEntity> = ActivityLocationEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@",
                                              #keyPath(ActivityLocationEntity.activity.name),
@@ -30,7 +31,7 @@ class DetailUserActivityRepository: DetailUserActivityRepositoryProtocol {
     }
     
     func deleteActivity(userDetailInfo: UserActivityModel,
-                        completion: @escaping (ResponseAPI<Void>) -> Void) {
+                        completion: @escaping (ResponseDB<Void>) -> Void) {
         let deleteFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ActivityEntity")
         let predicateDate = NSPredicate(format: "%K == %@",
                                         #keyPath(ActivityEntity.date),

@@ -10,7 +10,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     let homeViewController = HomeViewController()
-    let userActivityViewController = UserActivityViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    let userActivityViewController = UserActivityViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

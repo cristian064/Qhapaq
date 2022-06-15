@@ -13,7 +13,6 @@
 		2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */; };
 		2EB7D71327AB3F7700B648E2 /* QhapaqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB7D71227AB3F7700B648E2 /* QhapaqTests.swift */; };
 		2EEACB39278673A600052A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEACB38278673A600052A80 /* LoginViewController.swift */; };
-		2EEACB3C2786791B00052A80 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2EEACB3B2786791B00052A80 /* Lottie */; };
 		2EEC0A8127D9AA410056B852 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EEC0A8027D9AA400056B852 /* GoogleService-Info.plist */; };
 		40097B84275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B80275C5E9A00E4C036 /* ActivityEntity+CoreDataClass.swift */; };
 		40097B85275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40097B81275C5E9A00E4C036 /* ActivityEntity+CoreDataProperties.swift */; };
@@ -125,7 +124,6 @@
 			files = (
 				2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */,
 				409B3A862766601500200F02 /* CoreDataHelp in Frameworks */,
-				2EEACB3C2786791B00052A80 /* Lottie in Frameworks */,
 				2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +387,6 @@
 			name = Qhapaq;
 			packageProductDependencies = (
 				409B3A852766601500200F02 /* CoreDataHelp */,
-				2EEACB3B2786791B00052A80 /* Lottie */,
 				2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */,
 				2E4F7C7127B751DB00FC53ED /* NotificationsHelp */,
 			);
@@ -427,7 +424,6 @@
 			mainGroup = 408BBF04269E7AC000B37970;
 			packageReferences = (
 				409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */,
-				2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */,
 				2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */,
 			);
@@ -1520,16 +1516,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cristian064/GenericUtilities.git";
 			requirement = {
-				branch = develop;
+				branch = feature/req001;
 				kind = branch;
-			};
-		};
-		2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = exactVersion;
-				version = 3.2.1;
 			};
 		};
 		409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */ = {
@@ -1552,11 +1540,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */;
 			productName = GenericUtilities;
-		};
-		2EEACB3B2786791B00052A80 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2EEACB3A2786791B00052A80 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 		409B3A852766601500200F02 /* CoreDataHelp */ = {
 			isa = XCSwiftPackageProductDependency;

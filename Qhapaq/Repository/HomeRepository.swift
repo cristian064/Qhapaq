@@ -12,7 +12,12 @@ import CoreData
 import GenericUtilities
 import CoreDataHelp
 
-protocol HomeRepositoryProtocol: StorageAPI {
+enum ResponseAPI<T> {
+    case success(T)
+    case failure
+}
+
+protocol HomeRepositoryProtocol: StorageDB {
     func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>) -> Void)
     func getArtWork(completion: @escaping (ResponseAPI<[ArtWorkEntity]>) -> Void)
     func startAdventure(completion: @escaping (ResponseAPI<CLLocationDistance>) -> Void)
@@ -21,17 +26,17 @@ protocol HomeRepositoryProtocol: StorageAPI {
     func save(distance: Double,
               name: String,
               locations: [CLLocationProtocol],
-              completion: @escaping (ResponseAPI<Void>) -> Void)
+              completion: @escaping (ResponseDB<Void>) -> Void)
 }
 
 class HomeRepository: HomeRepositoryProtocol {
-    var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
+    var storageProvider: StorageProviderProtocol = StorageProvider.shared
     
     private var cancellables = Set<AnyCancellable>()
     lazy var locationProvider = LocationProvider()
     func getLocation(completion: @escaping (ResponseAPI<CLLocationProtocol>) -> Void) {
         guard let currentLocation = locationProvider.currentLocation else {
-            return completion(.failure(.init(code: 1000)))
+            return completion(.failure)
         }
         completion(.success(currentLocation))
     }
@@ -68,7 +73,7 @@ class HomeRepository: HomeRepositoryProtocol {
     func save(distance: Double,
               name: String,
               locations: [CLLocationProtocol],
-              completion: @escaping (ResponseAPI<Void>) -> Void) {
+              completion: @escaping (ResponseDB<Void>) -> Void) {
         let activity = ActivityEntity(context: StorageProvider.shared.persistentContainer.viewContext)
         activity.distance = distance
         activity.date = Date()

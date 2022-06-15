@@ -10,16 +10,16 @@ import CoreData
 import GenericUtilities
 import CoreDataHelp
 
-protocol ActivityRepositoryProtocol: StorageAPI {
+protocol ActivityRepositoryProtocol: StorageDB {
     func getAllActivities(text: String,
-                          completion: @escaping (ResponseAPI<[ActivityEntity]>) -> Void)
+                          completion: @escaping (ResponseDB<[ActivityEntity]>) -> Void)
 }
 
 class ActivityRepository: ActivityRepositoryProtocol {
-    var persistentContainer: NSPersistentContainer = StorageProvider.shared.persistentContainer
+    var storageProvider: StorageProviderProtocol = StorageProvider.shared
     
     func getAllActivities(text: String,
-                          completion: @escaping (ResponseAPI<[ActivityEntity]>) -> Void) {
+                          completion: @escaping (ResponseDB<[ActivityEntity]>) -> Void) {
         let fetchRequest: NSFetchRequest<ActivityEntity> = ActivityEntity.fetchRequest()
         fetchRequest.sortDescriptors = [.init(key: #keyPath(ActivityEntity.date), ascending: false)]
         if !text.isEmpty {

@@ -9,11 +9,28 @@ import UIKit
 import GenericUtilities
 import Combine
 
-class UserActivityViewController: UICollectionViewController {
+class UserActivityViewController: UIViewController {
 
     let viewModel: UserActivityViewModelProtocol  = UserActivityViewModel()
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
+    
+    let collectionView: UICollectionView = {
+        //Cell
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                
+        // Define Group Size
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        //section
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 32
+        
+        let compositionLayout = UICollectionViewCompositionalLayout(section: section)
+        return UICollectionView(frame: .zero, collectionViewLayout: compositionLayout)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +73,24 @@ class UserActivityViewController: UICollectionViewController {
     }
     
     func setupCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
     }
     
 }
 
-extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
+extension UserActivityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityCollectionViewCell
                                                         .cellIdentifier,
                                                             for: indexPath) as? ActivityCollectionViewCell else {
@@ -73,20 +100,21 @@ extension UserActivityViewController: UICollectionViewDelegateFlowLayout {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.elements.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: self.view.frame.width - 32, height: 120)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = self.viewModel.elements[indexPath.row]
         let detailUserActivity = DetailUserActivityViewController(userActivity: data)
         self.navigationController?.pushViewController(detailUserActivity, animated: false)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == self.viewModel.elements.count.decrement() {
+            print("more data")
+        }
+    }
 }
 
 extension UserActivityViewController: UISearchBarDelegate {

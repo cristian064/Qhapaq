@@ -51,8 +51,9 @@ class HomeViewModel: HomeViewModelProtocol {
             switch response {
             case .success(let location):
                 self?.locationSubject.value = location
-            case .failure(let error):
-                print(error)
+            case .failure:
+//                print(error)
+                break
             }
         })
     }

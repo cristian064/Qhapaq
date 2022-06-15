@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import GenericUtilities
+import CoreDataHelp
 
 protocol HomeDataSourceProtocol {
     var repository: HomeRepositoryProtocol {get}
@@ -18,7 +19,7 @@ protocol HomeDataSourceProtocol {
     func saveAdventure(name: String,
                        distance: Double,
                        locations: [CLLocationProtocol],
-                       completion: @escaping (ResponseAPI<Void>) -> Void)
+                       completion: @escaping (ResponseDB<Void>) -> Void)
     func stopAdventure()
 }
 
@@ -48,8 +49,8 @@ class HomeDataSource: HomeDataSourceProtocol {
                 }.compactMap({$0})
                 completion(.success(artWorkModel))
 
-            case .failure(let error):
-                completion(.failure(.init(code: 400)))
+            case .failure:
+                completion(.failure)
             }
         }
     }
@@ -69,7 +70,7 @@ class HomeDataSource: HomeDataSourceProtocol {
     func saveAdventure(name: String,
                        distance: Double,
                        locations: [CLLocationProtocol],
-                       completion: @escaping (ResponseAPI<Void>) -> Void) {
+                       completion: @escaping (ResponseDB<Void>) -> Void) {
         self.repository.save(distance: distance,
                              name: name,
                              locations: locations,

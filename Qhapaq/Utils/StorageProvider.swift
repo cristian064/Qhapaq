@@ -7,8 +7,9 @@
 
 import Foundation
 import CoreData
+import CoreDataHelp
 
-class StorageProvider {
+class StorageProvider: StorageProviderProtocol  {
     
     let persistentContainer: NSPersistentContainer
     

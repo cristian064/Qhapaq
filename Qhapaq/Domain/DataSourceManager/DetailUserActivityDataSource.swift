@@ -7,19 +7,20 @@
 
 import Foundation
 import GenericUtilities
+import CoreDataHelp
 
 protocol DetailUserActivityDataSourceProtocol {
     func getAdventureLocations(with name: String,
                                completion: @escaping (ResponseAPI<[CLLocationProtocol]>) -> Void)
     func deleteActivity(userDetailInfo: UserActivityModel,
-                        completion: @escaping (ResponseAPI<Void>) -> Void)
+                        completion: @escaping (ResponseDB<Void>) -> Void)
 }
 
 class DetailUserActivityDataSource: DetailUserActivityDataSourceProtocol {
     lazy var repository: DetailUserActivityRepositoryProtocol = DetailUserActivityRepository()
     
     func deleteActivity(userDetailInfo: UserActivityModel,
-                        completion: @escaping (ResponseAPI<Void>) -> Void) {
+                        completion: @escaping (ResponseDB<Void>) -> Void) {
         repository.deleteActivity(userDetailInfo: userDetailInfo,
                                   completion: completion)
     }
@@ -35,8 +36,8 @@ class DetailUserActivityDataSource: DetailUserActivityDataSourceProtocol {
                                                    longitude: locationEntity.longitude))
                 }
                 completion(.success(adventuresModel))
-            case .failure(let error):
-                completion(.failure(error))
+            case .failure:
+                completion(.failure)
             }
         }
     }
