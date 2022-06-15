@@ -37,7 +37,7 @@ class UserActivityViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.collectionView.backgroundColor = .white
-        setupSearchBar()
+//        setupSearchBar()
         setupCollectionView()
         setupBinding()
         callWebServices()
@@ -68,6 +68,7 @@ class UserActivityViewController: UIViewController {
     func setupBinding() {
         self.viewModel.elementsSubject.sink {[weak self] _ in
             self?.collectionView.reloadData()
+            self?.refresh.endRefreshing()
         }.store(in: &cancellables)
         
     }
@@ -84,8 +85,16 @@ class UserActivityViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
+        collectionView.refreshControl = refresh
+        refresh.addTarget(self, action: #selector(update), for: .valueChanged)
     }
     
+    let refresh: UIRefreshControl = .init(frame: .zero)
+    
+    @objc func update() {
+        self.viewModel.activity.pageNumber = 1
+        self.viewModel.getUserActivities()
+    }
 }
 
 extension UserActivityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -112,8 +121,19 @@ extension UserActivityViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == self.viewModel.elements.count.decrement() {
-            print("more data")
+            let pageSize = self.viewModel.activity.pageSize
+            let pageNumber = (indexPath.row.increment() / pageSize).increment()
+            self.viewModel.activity.pageNumber = pageNumber
+            self.viewModel.getUserActivities()
         }
+    }
+    
+}
+
+extension UserActivityViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
     }
 }
 
