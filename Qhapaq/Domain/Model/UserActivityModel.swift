@@ -37,6 +37,7 @@ protocol PaginationProtocol {
 }
 
 struct ActivityRequest: PaginationRequestProtocol {
+    var totalPage: Int
     let text: String
     var pageNumber: Int
     var pageSize: Int
@@ -45,4 +46,5 @@ struct ActivityRequest: PaginationRequestProtocol {
 protocol PaginationRequestProtocol {
     var pageNumber: Int {get set}
     var pageSize: Int {get set}
+    var totalPage: Int {get set}
 }

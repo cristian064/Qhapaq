@@ -25,7 +25,7 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
     var searchSubject = CurrentValueSubject<String, Never>("")
     var cancellables = Set<AnyCancellable>()
     lazy var dataSourceManger = UserActivityDataSourceManager()
-    var requestData = ActivityRequest(text: "", pageNumber: 1, pageSize: 10)
+    var requestData = ActivityRequest(totalPage: 1, text: "", pageNumber: 1, pageSize: 10)
     
     func loadData() {
         guard !isLoading else { return }
@@ -84,6 +84,7 @@ extension PaginationViewModelProtocol {
         }
         requestData.pageNumber = data.pageNumber
         requestData.pageSize = data.pageSize
+        requestData.totalPage = data.pageTotal
         if data.pageNumber == 1 {
             self.elements = paginableElement
         } else {
@@ -93,8 +94,11 @@ extension PaginationViewModelProtocol {
     }
     
     func loadMoreData() {
-            let pageNumber = (elements.count / requestData.pageSize).increment()
+        let pageNumber = (elements.count / requestData.pageSize).increment()
+        if pageNumber <= requestData.totalPage{
             requestData.pageNumber = pageNumber
+            print(pageNumber)
             loadData()
+        }
     }
 }

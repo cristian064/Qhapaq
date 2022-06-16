@@ -10,9 +10,7 @@ import GenericUtilities
 import Combine
 
 class UserActivityViewController: UIViewController, PaginationViewProtocol {
-//    typealias ViewModel = <#type#>
-//
-
+    
     var viewModel = UserActivityViewModel()
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
@@ -39,7 +37,6 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
 
         // Do any additional setup after loading the view.
         self.collectionView.backgroundColor = .white
-//        setupSearchBar()
         setupCollectionView()
         setupBinding()
         callWebServices()
@@ -86,13 +83,13 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
         collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
         collectionView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(update), for: .valueChanged)
+        collectionView.prefetchDataSource = self
     }
     
     var refresh: UIRefreshControl = .init(frame: .zero)
     
     @objc func update() {
-//        self.viewModel.activity.pageNumber = 1
-//        self.viewModel.getUserActivities()
+        initialLoadData()
     }
 }
 
@@ -118,16 +115,14 @@ extension UserActivityViewController: UICollectionViewDelegate, UICollectionView
         self.navigationController?.pushViewController(detailUserActivity, animated: false)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        willDisplay(indexPath: indexPath)
-    }
-    
 }
 
 extension UserActivityViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        
+        let indexPathsSorted = indexPaths.sorted(by: {$0.row > $1.row})
+        guard let first = indexPathsSorted.first else { return}
+        willDisplay(indexPath: first)
     }
 }
 
@@ -165,6 +160,11 @@ extension PaginationViewProtocol {
         if indexPath.row == self.viewModel.elements.count.decrement(){
             viewModel.loadMoreData()
         }
+    }
+    
+    func initialLoadData() {
+        viewModel.requestData.pageNumber = 1
+        viewModel.loadData()
     }
 }
 

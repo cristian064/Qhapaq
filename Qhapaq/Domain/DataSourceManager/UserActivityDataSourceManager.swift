@@ -19,9 +19,9 @@ class UserActivityDataSourceManager: UserActivityDataSourceManagerProtocol {
     func getActivities(request: ActivityRequest,
                        completion: @escaping (ResponseDB<UserActivityPaginated>) -> Void) {
         if let data = MockData.shared.getData(with: request){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 completion(.success(data))
-            })
+//            })
             
         } else {
             completion(.failure(.cannotLoad))
