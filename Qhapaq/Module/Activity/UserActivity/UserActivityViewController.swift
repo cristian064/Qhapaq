@@ -9,9 +9,11 @@ import UIKit
 import GenericUtilities
 import Combine
 
-class UserActivityViewController: UIViewController {
+class UserActivityViewController: UIViewController, PaginationViewProtocol {
+//    typealias ViewModel = <#type#>
+//
 
-    let viewModel: UserActivityViewModelProtocol  = UserActivityViewModel()
+    var viewModel = UserActivityViewModel()
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
     
@@ -50,7 +52,7 @@ class UserActivityViewController: UIViewController {
            !prefersLargeTitles {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
-        viewModel.getUserActivities()
+        viewModel.loadData()
     }
     
     func callWebServices() {
@@ -66,10 +68,7 @@ class UserActivityViewController: UIViewController {
     }
     
     func setupBinding() {
-        self.viewModel.elementsSubject.sink {[weak self] _ in
-            self?.collectionView.reloadData()
-            self?.refresh.endRefreshing()
-        }.store(in: &cancellables)
+        setupPaginationCombine(with: collectionView)
         
     }
     
@@ -89,11 +88,11 @@ class UserActivityViewController: UIViewController {
         refresh.addTarget(self, action: #selector(update), for: .valueChanged)
     }
     
-    let refresh: UIRefreshControl = .init(frame: .zero)
+    var refresh: UIRefreshControl = .init(frame: .zero)
     
     @objc func update() {
-        self.viewModel.activity.pageNumber = 1
-        self.viewModel.getUserActivities()
+//        self.viewModel.activity.pageNumber = 1
+//        self.viewModel.getUserActivities()
     }
 }
 
@@ -120,12 +119,7 @@ extension UserActivityViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == self.viewModel.elements.count.decrement() {
-            let pageSize = self.viewModel.activity.pageSize
-            let pageNumber = (indexPath.row.increment() / pageSize).increment()
-            self.viewModel.activity.pageNumber = pageNumber
-            self.viewModel.getUserActivities()
-        }
+        willDisplay(indexPath: indexPath)
     }
     
 }
@@ -142,3 +136,35 @@ extension UserActivityViewController: UISearchBarDelegate {
         self.viewModel.searchSubject.value = searchText
     }
 }
+
+extension UICollectionView: ReloadDataProtocol {
+    
+}
+
+protocol ReloadDataProtocol: AnyObject {
+    func reloadData()
+}
+
+protocol PaginationViewProtocol: AnyObject {
+    associatedtype ViewModel: PaginationViewModelProtocol
+    var viewModel: ViewModel {get set}
+    var cancellables: Set<AnyCancellable> {get set}
+    var refresh: UIRefreshControl {get set}
+    func setupPaginationCombine(with containerData: ReloadDataProtocol)
+    func willDisplay(indexPath: IndexPath)
+}
+
+extension PaginationViewProtocol {
+    func setupPaginationCombine(with containerData: ReloadDataProtocol) {
+        self.viewModel.elementsSubject.sink {[weak self, weak containerData] _ in
+            containerData?.reloadData()
+            self?.refresh.endRefreshing()
+        }.store(in: &cancellables)
+    }
+    func willDisplay(indexPath: IndexPath) {
+        if indexPath.row == self.viewModel.elements.count.decrement(){
+            viewModel.loadMoreData()
+        }
+    }
+}
+

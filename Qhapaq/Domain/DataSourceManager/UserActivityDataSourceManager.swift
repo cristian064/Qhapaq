@@ -13,24 +13,13 @@ protocol UserActivityDataSourceManagerProtocol {
     
 }
 
-protocol PaginationProtocol {
-    var pageNumber: Int {get set}
-    var pageSize: Int {get set}
-}
-
-struct ActivityRequest: PaginationProtocol {
-    let text: String
-    var pageNumber: Int
-    var pageSize: Int
-}
-
 class UserActivityDataSourceManager: UserActivityDataSourceManagerProtocol {
     lazy var repository: ActivityRepositoryProtocol = ActivityRepository()
     
     func getActivities(request: ActivityRequest,
                        completion: @escaping (ResponseDB<UserActivityPaginated>) -> Void) {
         if let data = MockData.shared.getData(with: request){
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 completion(.success(data))
             })
             
@@ -70,7 +59,7 @@ class MockData {
             let initial = request.pageSize * (request.pageNumber - 1)
             let final = request.pageSize * (request.pageNumber)
             let sliced = Array(data[initial..<final])
-            return .init(pageNumber: request.pageNumber, pageSize: request.pageSize, activities: sliced)
+            return .init(pageNumber: request.pageNumber, pageSize: request.pageSize, pageTotal: 10, data: sliced)
         }
         return nil
     }
