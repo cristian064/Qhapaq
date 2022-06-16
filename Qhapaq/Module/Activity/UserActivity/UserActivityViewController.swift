@@ -41,6 +41,7 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
         setupBinding()
         callWebServices()
         self.viewModel.setupSubscribeActionFromUI()
+        viewModel.loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +50,7 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
            !prefersLargeTitles {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
-        viewModel.loadData()
+        
     }
     
     func callWebServices() {
