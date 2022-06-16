@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */ = {isa = PBXBuildFile; productRef = 2E4F7C7127B751DB00FC53ED /* NotificationsHelp */; };
 		2E4F7C7527B7525900FC53ED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7727B7525900FC53ED /* Localizable.strings */; };
 		2E4F7C7B27B7538700FC53ED /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4F7C7A27B7538700FC53ED /* Constans.swift */; };
 		2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */; };
@@ -48,6 +47,7 @@
 		409F2AB626A2612F0024846B /* CLLocation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409F2AB526A2612F0024846B /* CLLocation+Extension.swift */; };
 		40A0591026A8F78B00BAE3D5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0590F26A8F78B00BAE3D5 /* MapView.swift */; };
 		40B2921E269E82BC006DC0C8 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2921D269E82BC006DC0C8 /* LocationProvider.swift */; };
+		C68C04BC285BC0EB008CAB15 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C68C04BB285BC0EB008CAB15 /* FirebaseCrashlytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E4F7C7227B751DB00FC53ED /* NotificationsHelp in Frameworks */,
+				C68C04BC285BC0EB008CAB15 /* FirebaseCrashlytics in Frameworks */,
 				409B3A862766601500200F02 /* CoreDataHelp in Frameworks */,
 				2EB7D70B27AB3EDA00B648E2 /* GenericUtilities in Frameworks */,
 			);
@@ -378,7 +378,8 @@
 				408BBF09269E7AC000B37970 /* Sources */,
 				408BBF0A269E7AC000B37970 /* Frameworks */,
 				408BBF0B269E7AC000B37970 /* Resources */,
-				2EFD058927A5DAC2005600D0 /* ShellScript */,
+				2EFD058927A5DAC2005600D0 /* SwiftLint */,
+				C68C04BE285BC1A2008CAB15 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -388,7 +389,7 @@
 			packageProductDependencies = (
 				409B3A852766601500200F02 /* CoreDataHelp */,
 				2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */,
-				2E4F7C7127B751DB00FC53ED /* NotificationsHelp */,
+				C68C04BB285BC0EB008CAB15 /* FirebaseCrashlytics */,
 			);
 			productName = Qhapaq;
 			productReference = 408BBF0D269E7AC000B37970 /* Qhapaq.app */;
@@ -425,7 +426,7 @@
 			packageReferences = (
 				409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */,
 				2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */,
-				2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */,
+				C68C04BA285BC0EB008CAB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 408BBF0E269E7AC000B37970 /* Products */;
 			projectDirPath = "";
@@ -459,7 +460,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2EFD058927A5DAC2005600D0 /* ShellScript */ = {
+		2EFD058927A5DAC2005600D0 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -468,6 +469,7 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -475,6 +477,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		C68C04BE285BC1A2008CAB15 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1504,14 +1526,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cristian064/NotificationsHelp.git";
-			requirement = {
-				branch = feature/req001;
-				kind = branch;
-			};
-		};
 		2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cristian064/GenericUtilities.git";
@@ -1528,14 +1542,17 @@
 				kind = branch;
 			};
 		};
+		C68C04BA285BC0EB008CAB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 9.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2E4F7C7127B751DB00FC53ED /* NotificationsHelp */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2E4F7C7027B751DB00FC53ED /* XCRemoteSwiftPackageReference "NotificationsHelp" */;
-			productName = NotificationsHelp;
-		};
 		2EB7D70A27AB3EDA00B648E2 /* GenericUtilities */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2EB7D70927AB3EDA00B648E2 /* XCRemoteSwiftPackageReference "GenericUtilities" */;
@@ -1545,6 +1562,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 409B3A842766601500200F02 /* XCRemoteSwiftPackageReference "CoreDataHelp" */;
 			productName = CoreDataHelp;
+		};
+		C68C04BB285BC0EB008CAB15 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C68C04BA285BC0EB008CAB15 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import NotificationsHelp
-import FirebaseMessaging
+//import NotificationsHelp
+//import FirebaseMessaging
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        self.setupNotifications(application)
+//        self.setupNotifications(application)
+        FirebaseApp.configure()
         return true
     }
 
@@ -34,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+/*
 extension AppDelegate: NotificationsProtocol {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
@@ -45,3 +48,4 @@ extension AppDelegate: NotificationsProtocol {
     }
 
 }
+*/
