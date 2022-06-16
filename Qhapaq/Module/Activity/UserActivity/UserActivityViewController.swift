@@ -10,7 +10,6 @@ import GenericUtilities
 import Combine
 
 class UserActivityViewController: UIViewController, PaginationViewProtocol {
-    
     var viewModel = UserActivityViewModel()
     var refresh: UIRefreshControl = .init(frame: .zero)
     private let searchController = UISearchController(searchResultsController: nil)
@@ -137,38 +136,4 @@ extension UserActivityViewController: UISearchBarDelegate {
     }
 }
 
-
-
-protocol ReloadDataProtocol: AnyObject {
-    func refreshList()
-}
-
-protocol PaginationViewProtocol: AnyObject {
-    associatedtype ViewModel: PaginationViewModelProtocol
-    var viewModel: ViewModel {get set}
-    var cancellables: Set<AnyCancellable> {get set}
-    var refresh: UIRefreshControl {get set}
-    func setupPaginationCombine()
-    func willDisplay(indexPath: IndexPath)
-    func reloadData()
-}
-
-extension PaginationViewProtocol {
-    func setupPaginationCombine() {
-        self.viewModel.elementsSubject.sink {[weak self] _ in
-            self?.reloadData()
-            self?.refresh.endRefreshing()
-        }.store(in: &cancellables)
-    }
-    func willDisplay(indexPath: IndexPath) {
-        if self.viewModel.elements.count.decrement() <= indexPath.row{
-            viewModel.loadMoreData()
-        }
-    }
-    
-    func initialLoadData() {
-        viewModel.requestData.pageNumber = 1
-        viewModel.loadData()
-    }
-}
 

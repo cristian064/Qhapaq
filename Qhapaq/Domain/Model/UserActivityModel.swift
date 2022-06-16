@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import GenericUtilities
 
 struct UserActivityPaginated: PaginationProtocol {
     typealias Element = UserActivityModel
@@ -27,24 +28,9 @@ struct AdventureLocationModel: CLLocationProtocol {
     var coordinate: CLLocationCoordinate2D
 }
 
-
-protocol PaginationProtocol {
-    associatedtype Element
-    var pageNumber: Int {get set}
-    var pageSize: Int {get set}
-    var pageTotal: Int {get set}
-    var data: [Element] {get set}
-}
-
 struct ActivityRequest: PaginationRequestProtocol {
     var totalPage: Int
     let text: String
     var pageNumber: Int
     var pageSize: Int
-}
-
-protocol PaginationRequestProtocol {
-    var pageNumber: Int {get set}
-    var pageSize: Int {get set}
-    var totalPage: Int {get set}
 }
