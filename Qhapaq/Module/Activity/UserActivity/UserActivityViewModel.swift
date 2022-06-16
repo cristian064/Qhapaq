@@ -17,7 +17,6 @@ protocol UserActivityViewModelProtocol: PaginationViewModelProtocol {
 
 class UserActivityViewModel: UserActivityViewModelProtocol {
     typealias PaginatedModel = UserActivityPaginated
-    typealias Element = UserActivityModel
     var elements: [UserActivityModel] = []
     var isLoading: Bool = false
     var elementsSubject = CurrentValueSubject<Void, Never>(())
@@ -65,10 +64,9 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
 
 protocol PaginationViewModelProtocol: AnyObject {
     associatedtype PaginatedModel: PaginationProtocol
-    associatedtype Element
     associatedtype RequestModel : PaginationRequestProtocol
     var requestData: RequestModel {get set}
-    var elements: [Element] {get set}
+    var elements: [PaginatedModel.Element] {get set}
     func setupData(with data: PaginatedModel)
     var elementsSubject: CurrentValueSubject<Void, Never> {get set}
     var isLoading: Bool {get set}
@@ -78,17 +76,13 @@ protocol PaginationViewModelProtocol: AnyObject {
 
 extension PaginationViewModelProtocol {
     func setupData(with data: PaginatedModel) {
-        guard let paginableElement = data.data as? [Element] else {
-            elements = []
-            return
-        }
         requestData.pageNumber = data.pageNumber
         requestData.pageSize = data.pageSize
         requestData.totalPage = data.pageTotal
         if data.pageNumber == 1 {
-            self.elements = paginableElement
+            self.elements = data.data
         } else {
-            self.elements.append(contentsOf: paginableElement)
+            self.elements.append(contentsOf: data.data)
         }
         elementsSubject.send()
     }
@@ -97,7 +91,6 @@ extension PaginationViewModelProtocol {
         let pageNumber = (elements.count / requestData.pageSize).increment()
         if pageNumber <= requestData.totalPage{
             requestData.pageNumber = pageNumber
-            print(pageNumber)
             loadData()
         }
     }

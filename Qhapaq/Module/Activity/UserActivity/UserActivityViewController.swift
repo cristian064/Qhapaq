@@ -161,7 +161,7 @@ extension PaginationViewProtocol {
         }.store(in: &cancellables)
     }
     func willDisplay(indexPath: IndexPath) {
-        if indexPath.row == self.viewModel.elements.count.decrement(){
+        if self.viewModel.elements.count.decrement() <= indexPath.row{
             viewModel.loadMoreData()
         }
     }
