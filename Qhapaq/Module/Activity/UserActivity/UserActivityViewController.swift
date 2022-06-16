@@ -12,6 +12,7 @@ import Combine
 class UserActivityViewController: UIViewController, PaginationViewProtocol {
     
     var viewModel = UserActivityViewModel()
+    var refresh: UIRefreshControl = .init(frame: .zero)
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
     
@@ -65,7 +66,7 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
     }
     
     func setupBinding() {
-        setupPaginationCombine(with: collectionView)
+        setupPaginationCombine()
         
     }
     
@@ -86,10 +87,14 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
         collectionView.prefetchDataSource = self
     }
     
-    var refresh: UIRefreshControl = .init(frame: .zero)
+    
     
     @objc func update() {
         initialLoadData()
+    }
+    
+    func reloadData() {
+        self.collectionView.reloadData()
     }
 }
 
@@ -132,12 +137,10 @@ extension UserActivityViewController: UISearchBarDelegate {
     }
 }
 
-extension UICollectionView: ReloadDataProtocol {
-    
-}
+
 
 protocol ReloadDataProtocol: AnyObject {
-    func reloadData()
+    func refreshList()
 }
 
 protocol PaginationViewProtocol: AnyObject {
@@ -145,14 +148,15 @@ protocol PaginationViewProtocol: AnyObject {
     var viewModel: ViewModel {get set}
     var cancellables: Set<AnyCancellable> {get set}
     var refresh: UIRefreshControl {get set}
-    func setupPaginationCombine(with containerData: ReloadDataProtocol)
+    func setupPaginationCombine()
     func willDisplay(indexPath: IndexPath)
+    func reloadData()
 }
 
 extension PaginationViewProtocol {
-    func setupPaginationCombine(with containerData: ReloadDataProtocol) {
-        self.viewModel.elementsSubject.sink {[weak self, weak containerData] _ in
-            containerData?.reloadData()
+    func setupPaginationCombine() {
+        self.viewModel.elementsSubject.sink {[weak self] _ in
+            self?.reloadData()
             self?.refresh.endRefreshing()
         }.store(in: &cancellables)
     }
