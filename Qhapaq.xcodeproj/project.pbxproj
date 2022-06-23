@@ -1080,7 +1080,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cal.Qhapaq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DebugQA;
 		};
@@ -1157,7 +1157,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cal.Qhapaq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ReleaseQA;
 		};
@@ -1240,7 +1240,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cal.Qhapaq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DebugDev;
 		};
@@ -1317,7 +1317,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cal.Qhapaq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ReleaseDev;
 		};
@@ -1394,7 +1394,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cal.Qhapaq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ReleaseProd;
 		};
@@ -1477,7 +1477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cal.Qhapaq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DebugProd;
 		};
