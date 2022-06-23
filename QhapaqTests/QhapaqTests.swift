@@ -21,6 +21,7 @@ class QhapaqTests: XCTestCase {
         homeMockDataSource = HomeMockDataSource()
         viewModel?.homeDataSource = homeMockDataSource
         
+        
     }
     
     func test_GetLocation() {
@@ -34,6 +35,7 @@ class QhapaqTests: XCTestCase {
         viewModel = nil
         homeMockDataSource = nil
         super.tearDown()
+        
     }
 }
 
