@@ -8,7 +8,7 @@
 import XCTest
 import CoreLocation
 import GenericUtilities
-
+import CoreDataHelp
 
 @testable import Qhapaq
 class QhapaqTests: XCTestCase {
@@ -38,6 +38,13 @@ class QhapaqTests: XCTestCase {
 }
 
 class HomeMockDataSource: HomeDataSourceProtocol {
+    
+    func saveAdventure(name: String, distance: Double, locations: [CLLocationProtocol], completion: @escaping (ResponseDB<Void>) -> Void) {
+        
+    }
+    
+
+    
     var repository: HomeRepositoryProtocol
     
     init() {
