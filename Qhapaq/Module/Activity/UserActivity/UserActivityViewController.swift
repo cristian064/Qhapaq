@@ -15,28 +15,30 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
     private let searchController = UISearchController(searchResultsController: nil)
     var cancellables = Set<AnyCancellable>()
     
-    let collectionView: UICollectionView = {
-        //Cell
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                
-        // Define Group Size
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        //section
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 32
-        
-        let compositionLayout = UICollectionViewCompositionalLayout(section: section)
-        return UICollectionView(frame: .zero, collectionViewLayout: compositionLayout)
-    }()
+//    let collectionView: UICollectionView = {
+//        //Cell
+//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
+//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//
+//        // Define Group Size
+//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+//
+//        //section
+//        let section = NSCollectionLayoutSection(group: group)
+//        section.interGroupSpacing = 32
+//
+//        let compositionLayout = UICollectionViewCompositionalLayout(section: section)
+//        return UICollectionView(frame: .zero, collectionViewLayout: compositionLayout)
+//    }()
+//
     
+    let tableView = UITableView(frame: .zero, style: .grouped)
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.collectionView.backgroundColor = .white
+        self.tableView.backgroundColor = .white
         setupCollectionView()
         setupBinding()
         callWebServices()
@@ -71,20 +73,22 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
     }
     
     func setupCollectionView() {
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.cellIdentifier)
-        collectionView.refreshControl = refresh
+        tableView.dataSource = self
+        tableView.delegate = self
+//        tableView.register(ActivityCollectionViewCell.self, forCellWithReuseIdentifier: ActivityCollectionViewCell.ce)
+        tableView.register(ActivityCollectionViewCell.self, forCellReuseIdentifier: ActivityCollectionViewCell.reuseIdentifier)
+        tableView.refreshControl = refresh
         refresh.addTarget(self, action: #selector(update), for: .valueChanged)
-        collectionView.prefetchDataSource = self
+//        collectionView.prefetchDataSource = self
+        tableView.prefetchDataSource = self
     }
     
     
@@ -94,32 +98,57 @@ class UserActivityViewController: UIViewController, PaginationViewProtocol {
     }
     
     func reloadData() {
-        self.collectionView.reloadData()
+        self.tableView.reloadData()
     }
 }
 
-extension UserActivityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityCollectionViewCell
-                                                        .cellIdentifier,
-                                                            for: indexPath) as? ActivityCollectionViewCell else {
-            return UICollectionViewCell()
+//extension UserActivityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActivityCollectionViewCell
+//                                                        .cellIdentifier,
+//                                                            for: indexPath) as? ActivityCollectionViewCell else {
+//            return UICollectionViewCell()
+//        }
+//        cell.data = self.viewModel.elements[indexPath.row]
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return self.viewModel.elements.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let data = self.viewModel.elements[indexPath.row]
+//        let detailUserActivity = DetailUserActivityViewController(userActivity: data)
+//        self.navigationController?.pushViewController(detailUserActivity, animated: false)
+//    }
+//
+//}
+
+extension UserActivityViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityCollectionViewCell.reuseIdentifier, for: indexPath) as? ActivityCollectionViewCell else {
+            return UITableViewCell()
         }
         cell.data = self.viewModel.elements[indexPath.row]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.elements.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let data = self.viewModel.elements[indexPath.row]
-        let detailUserActivity = DetailUserActivityViewController(userActivity: data)
-        self.navigationController?.pushViewController(detailUserActivity, animated: false)
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let indexPathsSorted = indexPaths.sorted(by: {$0.row > $1.row})
+        guard let first = indexPathsSorted.first else { return}
+        willDisplay(indexPath: first)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
 }
 
 extension UserActivityViewController: UICollectionViewDataSourcePrefetching {

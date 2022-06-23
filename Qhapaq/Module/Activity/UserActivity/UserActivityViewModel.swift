@@ -43,6 +43,7 @@ class UserActivityViewModel: UserActivityViewModelProtocol {
     
     
     func searchRoute(with text: String?) {
+        
 //        dataSourceManger.getActivities(request: text ?? "") {[weak self] response in
 //            switch response {
 //            case .success(let responseData):

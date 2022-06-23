@@ -9,6 +9,7 @@ import UIKit
 //import NotificationsHelp
 //import FirebaseMessaging
 import Firebase
+import FirebaseCrashlytics
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        self.setupNotifications(application)
         FirebaseApp.configure()
+        Crashlytics.crashlytics().setUserID("cal@gmail.com")
         return true
     }
 

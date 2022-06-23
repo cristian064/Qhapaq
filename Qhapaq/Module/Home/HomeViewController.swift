@@ -21,7 +21,9 @@ class HomeViewController: UIViewController {
     let distanceAdventureLabel = UILabel()
     lazy var containerOptionStackView = UIStackView(arrangedSubviews: [startAdventureButton,
                                                                        saveAdventure,
-                                                                       currentLocationButton])
+                                                                       currentLocationButton,
+                                                                       textView])
+    let textView = UITextView()
     private var cancellables = Set<AnyCancellable>()
     var isFirstLoaded = true
     override func viewDidLoad() {
@@ -79,7 +81,6 @@ class HomeViewController: UIViewController {
         self.view.addSubview(mapView)
         self.view.addSubview(containerOptionStackView)
         self.view.addSubview(distanceAdventureLabel)
-        
         mapView.anchor(top: self.view.topAnchor,
                        leading: self.view.leadingAnchor,
                        bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
@@ -92,11 +93,11 @@ class HomeViewController: UIViewController {
         
         distanceAdventureLabel.backgroundColor = .gray
         distanceAdventureLabel.textAlignment = .center
-        containerOptionStackView.anchor(top: nil,
+        containerOptionStackView.anchor(top: self.view.topAnchor,
                                      leading: nil,
-                                     bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                     bottom: nil,
                                      trailing: self.view.trailingAnchor,
-                                     padding: .init(top: 0, left: 0, bottom: 16, right: 16))
+                                     padding: .init(top: 16, left: 0, bottom: 0, right: 16))
 
         containerOptionStackView.spacing = 10
         containerOptionStackView.axis = .vertical
@@ -129,6 +130,14 @@ class HomeViewController: UIViewController {
         currentLocationButton.layer.shadowColor = UIColor.black.cgColor
         currentLocationButton.layer.shadowOffset = .init(width: 1, height: 1)
         
+        
+        textView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        textView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        textView.backgroundColor = .white
+        textView.delegate = self
+        textView.text = "Por favor escribe"
+        textView.textColor = UIColor.gray
     }
     
     @objc func currentLocationButtonPressed() {
@@ -138,7 +147,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc func startAdventureButtonAction() {
-        viewModel.startAdventure()
+//        viewModel.startAdventure()
+        self.view.endEditing(true)
     }
     
     @objc func saveAdventureAction() {
@@ -171,4 +181,19 @@ class HomeViewController: UIViewController {
         self.viewModel.saveAdventure(name: name)
     }
     
+}
+
+extension HomeViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Por favor escribe" {
+                textView.text = ""
+                textView.textColor = UIColor.black
+            }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.textColor = UIColor.gray
+            textView.text = "Por favor escribe"
+        }
+    }
 }
