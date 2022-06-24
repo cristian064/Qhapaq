@@ -22,7 +22,6 @@ struct UserActivityModel {
     let distance: Double
     let name: String
     let date: Date
-    var textView: String = ""
 }
 
 struct AdventureLocationModel: CLLocationProtocol {

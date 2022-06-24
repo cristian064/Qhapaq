@@ -8,32 +8,24 @@
 import UIKit
 import GenericUtilities
 
-class ActivityCollectionViewCell: UITableViewCell, ReuseIdentifier {
+class ActivityCollectionViewCell: UICollectionViewCell, ReuseIdentifier {
     
     let imageViewCustom = UIImageView()
     let titleEventLabel = UILabel()
     let descriptionEventLabel = UILabel()
-    let textView = UITextView()
     
     var data: UserActivityModel! {
         didSet {
             titleEventLabel.text = data.name
             descriptionEventLabel.text = "\(data.distance/1000) km"
-            textView.text = data.textView
         }
     }
     
     let stackView = UIStackView()
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setupView()
-//    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -61,21 +53,11 @@ class ActivityCollectionViewCell: UITableViewCell, ReuseIdentifier {
         imageViewCustom.layer.cornerRadius = 5
         
         let verticalStackView = UIStackView(arrangedSubviews: [titleEventLabel,
-                                                               descriptionEventLabel,
-                                                               textView])
-        textView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textView.backgroundColor = .white
+                                                               descriptionEventLabel])
         verticalStackView.axis = .vertical
         stackView.addArrangedSubview(verticalStackView)
         stackView.addArrangedSubview(UIView())
-        textView.delegate = self
     }
     
   
-}
-
-extension ActivityCollectionViewCell: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        data.textView = textView.text
-    }
 }
