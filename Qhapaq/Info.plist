@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -19,13 +17,15 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>&quot;Necesitamos su ubicacion para nuevas tareas&quot;</string>
+	<string>"Necesitamos su ubicacion para nuevas tareas"</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;tell us whta are you doing&quot;</string>
+	<string>"tell us whta are you doing"</string>
 	<key>SERVER_URL</key>
 	<string>$(SERVER_URL)</string>
 	<key>UIApplicationSceneManifest</key>

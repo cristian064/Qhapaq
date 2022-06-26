@@ -39,9 +39,12 @@ platform :ios do
         in_house: false # optional but may be required if using match/sigh
     )
     build_app(scheme: "Qhapaq-Dev")
-    upload_to_testflight
+    #upload_to_testflight
   end
   
+  lane :refresh_dsyms do
+    download_dsyms(version: "latest")                  # Download dSYM files from iTC
+    end
 end
 
 
